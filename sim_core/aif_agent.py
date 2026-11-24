@@ -181,12 +181,20 @@ class ActiveInferencePet:
         self,
         sim: HeadlessSimulation,
         last_record: TickRecord | None = None,
+        c_offsets: list[jnp.ndarray] | None = None,
     ) -> CognitiveStep:
         """Run one JIT-compiled perception -> planning -> action cycle."""
-        new_c = [
-            jnp.expand_dims(c_m, axis=0)
-            for c_m in build_C_preferences(self.genome, sim.pet.homeostasis)
-        ]
+        base_c = build_C_preferences(self.genome, sim.pet.homeostasis)
+        if c_offsets is not None:
+            adjusted_c: list[jnp.ndarray] = []
+            for c_m, offset_m in zip(base_c, c_offsets, strict=True):
+                combined = c_m + jnp.asarray(offset_m, dtype=jnp.float32)
+                shifted = combined - jnp.min(combined) + 0.05
+                adjusted_c.append(jnp.expand_dims(shifted, axis=0))
+            new_c = adjusted_c
+        else:
+            new_c = [jnp.expand_dims(c_m, axis=0) for c_m in base_c]
+
         obs = self.encode_observation(sim, last_record)
 
         qs, vfe_arr, q_pi, neg_efe, action, next_prior, next_key = _jit_aif_step(

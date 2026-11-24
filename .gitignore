@@ -1,0 +1,23 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Data & Local Secrets
+.env
+data/*.db
+data/*.sqlite*
+data/runs/
+*.pt
+*.onnx
+
+# Godot 4
+godot_client/.godot/
+godot_client/*.import
+
+# OS & Editor
+.DS_Store
+Thumbs.db

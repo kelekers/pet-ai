@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pet-ai"
+version = "0.1.0"
+description = "Emergent Synthetic Ethology: Active Inference, Quality-Diversity, and Neuro-Symbolic Skill Synthesis"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.13",
+    "jax>=0.4.30",
+    "inferactively-pymdp>=1.0.4",
+    "ribs[visualize]>=0.12.1",
+    "pydantic>=2.8",
+    "sqlite-vec>=0.1.6",
+    "fastembed>=0.4.0",
+    "ollama>=0.4.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "websockets>=13.0",
+    "msgpack>=1.1.0",
+    "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.7",
+    "ipykernel>=6.29",
+]
+bench = [
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "umap-learn>=0.5",
+]
+
+[tool.setuptools.packages.find]
+include = ["sim_core*", "qd_lab*", "memory*", "neuro_symbolic*", "bridge*", "benchmarks*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

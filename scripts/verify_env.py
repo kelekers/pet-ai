@@ -26,9 +26,10 @@ def main() -> None:
 
     try:
         import ollama
+
         models = [m.model for m in ollama.list().models]
         print(f"Ollama reachable | Models: {models}")
-    except Exception as exc:
+    except (ImportError, OSError, RuntimeError) as exc:
         print(f"Ollama check skipped/unreachable: {exc}")
 
     print("\nSprint 0 environment check PASSED.")

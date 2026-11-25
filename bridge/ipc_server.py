@@ -7,8 +7,9 @@ from pathlib import Path
 from typing import Any
 
 import msgpack
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, RedirectResponse
 from pydantic import ValidationError
 
 from bridge.protocol import (
@@ -28,6 +29,7 @@ from sim_core.genome_mapper import ACTION_NAMES
 from sim_core.world import RoomWorld
 
 DEFAULT_ARCHIVE_PATH = Path("data/archives/personality_archive.json")
+DEFAULT_INSPECTOR_PATH = Path(__file__).resolve().parent.parent / "telemetry_ui" / "index.html"
 
 PRESET_BUILDERS: dict[str, TraitGenome] = {
     "hairless_sphynx": TraitGenome.preset_hairless_sphynx(),
@@ -375,6 +377,16 @@ def create_app(
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    @app.get("/")
+    async def root_redirect() -> RedirectResponse:
+        return RedirectResponse(url="/inspector")
+
+    @app.get("/inspector", response_model=None)
+    async def get_inspector() -> FileResponse:
+        if not DEFAULT_INSPECTOR_PATH.exists():
+            raise HTTPException(status_code=404, detail="Telemetry inspector HTML not found.")
+        return FileResponse(DEFAULT_INSPECTOR_PATH, media_type="text/html")
 
     @app.get("/health")
     async def health() -> dict[str, object]:

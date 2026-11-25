@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PET-AI Cognitive Telemetry Inspector</title>
+  <style>
+    :root {
+      --bg: #f4f6fa;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #d5dde8;
+      --text: #182230;
+      --muted: #5a6778;
+      --teal: #0f766e;
+      --teal-soft: #e6f6f3;
+      --blue: #2563eb;
+      --blue-soft: #eaf2ff;
+      --coral: #dc5842;
+      --coral-soft: #fdf0ed;
+      --amber: #c97a16;
+      --amber-soft: #fef7e6;
+      --mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* Header Control Bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      margin-right: 4px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge.ok { color: var(--teal); background: var(--teal-soft); border-color: #99d8cf; }
+    .badge.err { color: var(--coral); background: var(--coral-soft); border-color: #f2bfb6; }
+    .badge.warn { color: var(--amber); background: var(--amber-soft); border-color: #ebd09b; }
+    .badge.busy { color: var(--blue); background: var(--blue-soft); border-color: #b5cffb; }
+
+    .summary-pill {
+      flex: 1 1 240px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-group { display: inline-flex; gap: 4px; align-items: center; }
+    button {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 9px;
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    button:hover { background: var(--blue-soft); border-color: #9fc0f7; color: var(--blue); }
+    button.active { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); }
+    button.danger:hover { background: var(--coral-soft); border-color: var(--coral); color: var(--coral); }
+
+    /* Main 3-Column Technical Grid */
+    main {
+      max-width: 1520px;
+      margin: 0 auto;
+      padding: 12px 14px 20px;
+      display: grid;
+      grid-template-columns: 350px minmax(340px, 1fr) 340px;
+      gap: 12px;
+      align-items: start;
+    }
+    @media (max-width: 1180px) {
+      main { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 780px) {
+      main { grid-template-columns: 1fr; }
+    }
+
+    .col { display: flex; flex-direction: column; gap: 12px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 12px;
+    }
+    .card-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .meta-note {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--muted);
+    }
+
+    /* MAP-Elites Atlas */
+    .atlas-wrap {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 6px;
+      align-items: center;
+    }
+    .atlas-ylabel {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 10px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .atlas-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 2px;
+      background: #e6ebf2;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3px;
+      aspect-ratio: 1 / 1;
+    }
+    .atlas-cell {
+      border-radius: 3px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      color: rgba(255, 255, 255, 0.9);
+      user-select: none;
+      transition: transform 0.08s, box-shadow 0.08s;
+    }
+    .atlas-cell.occupied { cursor: pointer; }
+    .atlas-cell.occupied:hover {
+      transform: scale(1.12);
+      z-index: 2;
+      box-shadow: 0 0 0 2px #182230;
+    }
+    .atlas-cell.selected { box-shadow: 0 0 0 2px var(--coral); z-index: 3; }
+    .atlas-xlabel {
+      text-align: center;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 4px;
+      padding-left: 24px;
+    }
+
+    /* Canvas elements */
+    canvas.plot {
+      width: 100%;
+      display: block;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: #fafbfd;
+    }
+    canvas#roomCanvas { cursor: crosshair; }
+
+    /* Meters & Progress Bars */
+    .meter-list { display: flex; flex-direction: column; gap: 6px; }
+    .meter-row {
+      display: grid;
+      grid-template-columns: 88px 1fr 48px;
+      gap: 8px;
+      align-items: center;
+      font-size: 11.5px;
+    }
+    .meter-track {
+      height: 10px;
+      background: #e9eef5;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .meter-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.12s linear;
+    }
+    .meter-val {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-align: right;
+      color: var(--muted);
+    }
+
+    /* Controls & Skill Feed */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .prompt-row { display: flex; gap: 6px; margin-top: 8px; }
+    input[type="text"] {
+      flex: 1;
+      font-family: var(--sans);
+      font-size: 12px;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface-alt);
+      color: var(--text);
+    }
+    input[type="text"]:focus { outline: none; border-color: var(--blue); background: #fff; }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-height: 185px;
+      overflow-y: auto;
+      margin-top: 6px;
+    }
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 7px;
+      border: 1px solid #e6ebf2;
+      border-radius: 5px;
+      background: var(--surface-alt);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    .skill-item.active {
+      border-color: #93c5fd;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 999px;
+    }
+    .tag.new { background: #ede9fe; color: #5b21b6; }
+    .tag.reused { background: var(--teal-soft); color: var(--teal); }
+
+    /* Tooltip */
+    #tooltip {
+      position: fixed;
+      pointer-events: none;
+      z-index: 50;
+      display: none;
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid #b6c4d6;
+      border-radius: 6px;
+      padding: 7px 9px;
+      box-shadow: 0 4px 14px rgba(24, 34, 48, 0.12);
+      font-size: 11px;
+      font-family: var(--mono);
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">PET-AI Inspector</span>
+    <span id="connBadge" class="badge err">Offline</span>
+    <span id="llmBadge" class="badge warn">LLM: Fallback</span>
+    <span id="summaryPill" class="summary-pill">Connecting to ws://127.0.0.1:8765/ws ...</span>
+
+    <div class="btn-group">
+      <button id="pauseBtn">Pause</button>
+      <button id="stepBtn">Step</button>
+      <button id="resetBtn">Reset Room</button>
+    </div>
+    <div class="btn-group" id="speedBtns">
+      <button data-hz="3">0.5x</button>
+      <button data-hz="6" class="active">1x</button>
+      <button data-hz="12">2x</button>
+      <button data-hz="18">3x</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Column 1: MAP-Elites Atlas & 2D Room Minimap -->
+    <section class="col">
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">MAP-Elites Personality Atlas</span>
+          <div class="btn-group">
+            <span id="atlasMeta" class="meta-note">loading...</span>
+            <button id="refreshAtlasBtn" title="Reload /archive">Reload</button>
+          </div>
+        </div>
+        <div class="atlas-wrap">
+          <div class="atlas-ylabel">Activity Entropy (Specialist &rarr; Explorer)</div>
+          <div id="atlasGrid" class="atlas-grid"></div>
+        </div>
+        <div class="atlas-xlabel">Human Engagement (Solitary &rarr; Social) &bull; Click any cell to spawn</div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">Room Minimap (6m &times; 6m)</span>
+          <span id="posNote" class="meta-note">Click floor to move human</span>
+        </div>
+        <canvas id="roomCanvas" class="plot" width="320" height="320"></canvas>
+      </div>
+    </section>
+
+    <!-- Column 2: Cognitive Charts (VFE, Policy q_pi, PAD & Social) -->
+    <section class="col">
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">Variational Free Energy (VFE)</span>
+          <span id="vfeNote" class="meta-note">current: 0.00 | trigger: 3.20</span>
+        </div>
+        <canvas id="vfeCanvas" class="plot" width="560" height="150"></canvas>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">Active Inference Policy Posterior q(&pi;)</span>
+          <span id="modeNote" class="meta-note">active_inference</span>
+        </div>
+        <canvas id="policyCanvas" class="plot" width="560" height="195"></canvas>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">Emotion (PAD) &amp; Social Beliefs</span>
+          <span id="moodBadge" class="badge">Neutral Alert</span>
+        </div>
+        <div class="meter-list" id="padMeters"></div>
+      </div>
+    </section>
+
+    <!-- Column 3: Homeostasis, Controls & Skill Library Feed -->
+    <section class="col">
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">Homeostasis</span>
+          <span id="tempNote" class="meta-note">Core: 38.0&deg;C | Env: 20.0&deg;C</span>
+        </div>
+        <div class="meter-list" id="homMeters"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">Presets &amp; Sensory Events</span>
+          <span id="morphNote" class="meta-note">fur: 0.00 | anom: 0.00</span>
+        </div>
+        <div class="grid-2" id="presetGrid"></div>
+        <div style="height: 8px"></div>
+        <div class="grid-2" id="eventGrid"></div>
+        <div class="prompt-row">
+          <input id="promptInput" type="text" placeholder="Send prompt to LLM Director..." />
+          <button id="sendPromptBtn">Send</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="card-title">Verified Skill Library</span>
+          <span id="skillCountNote" class="meta-note">0 rituals</span>
+        </div>
+        <div id="activeSkillBanner" class="meta-note">Active Inference (Fast Path)</div>
+        <div id="skillList" class="skill-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="tooltip"></div>
+
+  <script>
+    (() => {
+      const ACTION_ORDER = [
+        "idle", "radiator", "laptop", "food_bowl",
+        "cardboard_box", "stare_user", "rub_user", "chaos_play"
+      ];
+      const PRESETS = [
+        ["impossible_cat", "Impossible Cat"],
+        ["hairless_sphynx", "Hairless Sphynx"],
+        ["staring_observer", "Staring Observer"],
+        ["chaotic_gremlin", "Chaotic Gremlin"],
+        ["shy_hermit", "Shy Hermit"]
+      ];
+      const EVENTS = [
+        ["calm_petting", "Pet Gently", false],
+        ["gentle_feeding", "Feed Treats", false],
+        ["loud_clatter", "Loud Clatter", true],
+        ["startling_shout", "Shout", true]
+      ];
+
+      let ws = null;
+      let latestState = null;
+      let archiveData = null;
+      let selectedArchiveCell = null;
+      let lastPreset = "";
+      let lastTick = -1;
+      const vfeHistory = [];
+      const trail = [];
+
+      const tooltip = document.getElementById("tooltip");
+      const connBadge = document.getElementById("connBadge");
+      const llmBadge = document.getElementById("llmBadge");
+      const summaryPill = document.getElementById("summaryPill");
+      const pauseBtn = document.getElementById("pauseBtn");
+      const atlasGrid = document.getElementById("atlasGrid");
+      const atlasMeta = document.getElementById("atlasMeta");
+
+      // Build static meter rows once
+      function createMeters(containerId, specs) {
+        const host = document.getElementById(containerId);
+        const refs = {};
+        for (const [key, label, color] of specs) {
+          const row = document.createElement("div");
+          row.className = "meter-row";
+          row.innerHTML =
+            `<span>${label}</span>` +
+            `<div class="meter-track"><div class="meter-fill" style="width:0%;background:${color}"></div></div>` +
+            `<span class="meter-val">0</span>`;
+          host.appendChild(row);
+          refs[key] = {
+            fill: row.querySelector(".meter-fill"),
+            val: row.querySelector(".meter-val")
+          };
+        }
+        return refs;
+      }
+
+      const homRefs = createMeters("homMeters", [
+        ["warmth", "Warmth", "#dc5842"],
+        ["hunger", "Hunger", "#d97706"],
+        ["energy", "Energy", "#0f766e"],
+        ["stimulation", "Stimulation", "#2563eb"],
+        ["comfort", "Comfort", "#6366f1"]
+      ]);
+
+      const padRefs = createMeters("padMeters", [
+        ["pleasure", "Pleasure", "#0f766e"],
+        ["arousal", "Arousal", "#d97706"],
+        ["dominance", "Dominance", "#4f46e5"],
+        ["user_trust", "User Trust", "#0284c7"],
+        ["user_fear", "User Fear", "#dc5842"],
+        ["user_belief_calm", "Calm Belief", "#14b8a6"]
+      ]);
+
+      // Build preset & event buttons
+      const presetGrid = document.getElementById("presetGrid");
+      for (const [id, label] of PRESETS) {
+        const b = document.createElement("button");
+        b.textContent = label;
+        b.onclick = () => sendCommand({ type: "spawn_preset", preset: id });
+        presetGrid.appendChild(b);
+      }
+      const eventGrid = document.getElementById("eventGrid");
+      for (const [id, label, isDanger] of EVENTS) {
+        const b = document.createElement("button");
+        b.textContent = label;
+        if (isDanger) b.className = "danger";
+        b.onclick = () => sendCommand({ type: "sensory_event", event: id });
+        eventGrid.appendChild(b);
+      }
+
+      // Header buttons
+      pauseBtn.onclick = () => {
+        const paused = latestState ? !!latestState.paused : false;
+        sendCommand({ type: "set_paused", paused: !paused });
+      };
+      document.getElementById("stepBtn").onclick = () => sendCommand({ type: "step_once" });
+      document.getElementById("resetBtn").onclick = () => sendCommand({ type: "reset_room" });
+      document.getElementById("refreshAtlasBtn").onclick = () => loadArchive();
+
+      document.querySelectorAll("#speedBtns button").forEach((btn) => {
+        btn.onclick = () => sendCommand({ type: "set_speed", tick_hz: Number(btn.dataset.hz) });
+      });
+
+      const promptInput = document.getElementById("promptInput");
+      function submitPrompt() {
+        const text = promptInput.value.trim();
+        if (!text) return;
+        sendCommand({ type: "user_prompt", text });
+        promptInput.value = "";
+      }
+      document.getElementById("sendPromptBtn").onclick = submitPrompt;
+      promptInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") submitPrompt();
+      });
+
+      // Minimap click -> move_user
+      const roomCanvas = document.getElementById("roomCanvas");
+      roomCanvas.addEventListener("click", (ev) => {
+        const rect = roomCanvas.getBoundingClientRect();
+        const pad = 18;
+        const nx = (ev.clientX - rect.left - pad) / (rect.width - pad * 2);
+        const ny = (ev.clientY - rect.top - pad) / (rect.height - pad * 2);
+        const simX = Math.max(0, Math.min(6, nx * 6));
+        const simY = Math.max(0, Math.min(6, ny * 6));
+        sendCommand({ type: "move_user", x: Number(simX.toFixed(2)), y: Number(simY.toFixed(2)) });
+      });
+
+      function sendCommand(payload) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify(payload));
+        }
+      }
+
+      function wsUrl() {
+        const proto = location.protocol === "https:" ? "wss:" : "ws:";
+        const host = location.host || "127.0.0.1:8765";
+        return `${proto}//${host}/ws`;
+      }
+
+      function connectWS() {
+        ws = new WebSocket(wsUrl());
+        ws.onopen = () => {
+          connBadge.textContent = "Connected";
+          connBadge.className = "badge ok";
+          loadArchive();
+        };
+        ws.onclose = () => {
+          connBadge.textContent = "Offline";
+          connBadge.className = "badge err";
+          setTimeout(connectWS, 1800);
+        };
+        ws.onerror = () => ws.close();
+        ws.onmessage = (ev) => {
+          try {
+            const msg = JSON.parse(ev.data);
+            if (!msg.error) applyFrame(msg);
+          } catch (_) {}
+        };
+      }
+
+      function colorForObjective(val) {
+        const t = Math.max(0, Math.min(1, (val - 0.55) / 0.45));
+        const r = Math.round(186 * (1 - t) + 15 * t);
+        const g = Math.round(224 * (1 - t) + 118 * t);
+        const b = Math.round(238 * (1 - t) + 110 * t);
+        return `rgb(${r},${g},${b})`;
+      }
+
+      async function loadArchive() {
+        try {
+          const res = await fetch("/archive");
+          archiveData = await res.json();
+          renderAtlas();
+        } catch (err) {
+          atlasMeta.textContent = "archive unavailable";
+        }
+      }
+
+      function renderAtlas() {
+        if (!archiveData) return;
+        const meta = archiveData.metadata || {};
+        const dims = meta.grid_dims || [10, 10];
+        const nx = dims[0] || 10;
+        const ny = dims[1] || 10;
+        atlasGrid.style.gridTemplateColumns = `repeat(${nx}, 1fr)`;
+        atlasGrid.innerHTML = "";
+
+        const byCell = new Map();
+        for (const el of archiveData.elites || []) {
+          byCell.set(Number(el.cell_index), el);
+        }
+        const cov = ((meta.coverage || 0) * 100).toFixed(0);
+        atlasMeta.textContent = `${byCell.size}/${nx * ny} (${cov}%) QD ${(meta.qd_score || 0).toFixed(1)}`;
+
+        // Top row = highest entropy (iy = ny - 1 down to 0)
+        for (let iy = ny - 1; iy >= 0; iy--) {
+          for (let ix = 0; ix < nx; ix++) {
+            const idx = ix * ny + iy;
+            const el = byCell.get(idx);
+            const cell = document.createElement("div");
+            cell.className = "atlas-cell" + (el ? " occupied" : "");
+            if (selectedArchiveCell === idx) cell.classList.add("selected");
+            if (el) {
+              const obj = Number(el.objective || 0.7);
+              cell.style.background = colorForObjective(obj);
+              cell.style.color = obj > 0.78 ? "#ffffff" : "#182230";
+              cell.textContent = Math.round(obj * 100);
+              cell.onclick = () => {
+                selectedArchiveCell = idx;
+                sendCommand({ type: "spawn_archive_cell", cell_index: idx });
+                renderAtlas();
+              };
+              cell.onmousemove = (e) => {
+                const g = el.genome || {};
+                const anom = Math.max(
+                  g.gravity_defiance || 0, g.spatial_phase || 0,
+                  g.mimicry_drive || 0, g.sentience_glimmer || 0
+                );
+                tooltip.textContent =
+                  `Cell #${idx} | ${el.archetype}\n` +
+                  `Dominant: ${el.dominant_action} | Obj: ${obj.toFixed(3)}\n` +
+                  `Fur: ${(g.fur_density ?? 0).toFixed(2)} | Max Anomaly: ${anom.toFixed(2)}\n` +
+                  `Click to spawn live`;
+                tooltip.style.display = "block";
+                tooltip.style.left = Math.min(window.innerWidth - 250, e.clientX + 14) + "px";
+                tooltip.style.top = Math.min(window.innerHeight - 100, e.clientY + 12) + "px";
+              };
+              cell.onmouseleave = () => { tooltip.style.display = "none"; };
+            }
+            atlasGrid.appendChild(cell);
+          }
+        }
+      }
+
+      function applyFrame(s) {
+        latestState = s;
+        if (s.preset_label !== lastPreset || s.tick < lastTick) {
+          lastPreset = s.preset_label;
+          vfeHistory.length = 0;
+          trail.length = 0;
+        }
+        if (s.tick !== lastTick) {
+          lastTick = s.tick;
+          vfeHistory.push(Number(s.vfe || 0));
+          if (vfeHistory.length > 100) vfeHistory.shift();
+          trail.push([Number(s.x), Number(s.y)]);
+          if (trail.length > 60) trail.shift();
+        }
+
+        // Top bar state
+        summaryPill.textContent = `${s.preset_label} | tick ${s.tick} | ${s.mode} | ${s.action}`;
+        pauseBtn.textContent = s.paused ? "Resume" : "Pause";
+        pauseBtn.classList.toggle("active", !!s.paused);
+        document.querySelectorAll("#speedBtns button").forEach((b) => {
+          b.classList.toggle("active", Math.abs(Number(b.dataset.hz) - Number(s.tick_hz || 6)) < 0.6);
+        });
+
+        // LLM badge
+        const status = String(s.llm_status || "idle");
+        const backend = String(s.llm_backend || "mock");
+        llmBadge.title = `Backend: ${backend} | Status: ${status}`;
+        if (status === "synthesizing") {
+          llmBadge.textContent = "LLM: Synthesizing...";
+          llmBadge.className = "badge busy";
+        } else if (status.startsWith("error")) {
+          llmBadge.textContent = "LLM: Error";
+          llmBadge.className = "badge err";
+        } else if (backend === "mock") {
+          llmBadge.textContent = "LLM: Fallback";
+          llmBadge.className = "badge warn";
+        } else {
+          llmBadge.textContent = "LLM: Idle";
+          llmBadge.className = "badge ok";
+        }
+
+        // Homeostasis
+        const h = s.homeostasis || {};
+        for (const k of ["warmth", "hunger", "energy", "stimulation", "comfort"]) {
+          const v = Math.max(0, Math.min(1, Number(h[k] ?? 0)));
+          homRefs[k].fill.style.width = `${(v * 100).toFixed(1)}%`;
+          homRefs[k].val.textContent = `${Math.round(v * 100)}%`;
+        }
+        document.getElementById("tempNote").textContent =
+          `Core: ${Number(h.core_temp_c ?? 38).toFixed(2)}°C | Env: ${Number(s.local_temp_c ?? 20).toFixed(1)}°C`;
+
+        // PAD & Social
+        const pad = s.pad || {};
+        const moodBadge = document.getElementById("moodBadge");
+        moodBadge.textContent = String(pad.mood || "neutral_alert").replace(/_/g, " ");
+        moodBadge.className =
+          Number(pad.fear_intensity || 0) > 0.35 ? "badge err" :
+          Number(pad.pleasure || 0) >= 0.15 ? "badge ok" : "badge";
+
+        for (const k of ["pleasure", "arousal", "dominance"]) {
+          const v = Math.max(-1, Math.min(1, Number(pad[k] ?? 0)));
+          padRefs[k].fill.style.width = `${(((v + 1) * 0.5) * 100).toFixed(1)}%`;
+          padRefs[k].val.textContent = `${v >= 0 ? "+" : ""}${v.toFixed(2)}`;
+        }
+        const trust = Math.max(-1, Math.min(1, Number(s.user_trust ?? 0)));
+        padRefs.user_trust.fill.style.width = `${(((trust + 1) * 0.5) * 100).toFixed(1)}%`;
+        padRefs.user_trust.val.textContent = `${trust >= 0 ? "+" : ""}${trust.toFixed(2)}`;
+
+        const fear = Math.max(0, Math.min(1, Number(s.user_fear ?? 0)));
+        padRefs.user_fear.fill.style.width = `${(fear * 100).toFixed(1)}%`;
+        padRefs.user_fear.val.textContent = fear.toFixed(2);
+
+        const calm = Math.max(0, Math.min(1, Number(s.user_belief_calm ?? 0.5)));
+        padRefs.user_belief_calm.fill.style.width = `${(calm * 100).toFixed(1)}%`;
+        padRefs.user_belief_calm.val.textContent = `${Math.round(calm * 100)}%`;
+
+        // Morphology
+        const m = s.morphology || {};
+        document.getElementById("morphNote").textContent =
+          `fur: ${Number(m.fur_density ?? 0).toFixed(2)} | anom: ${Number(m.max_anomaly ?? 0).toFixed(2)}`;
+
+        // Skills
+        const skills = s.skill_library || [];
+        const counts = s.skill_use_counts || {};
+        document.getElementById("skillCountNote").textContent = `${skills.length} rituals`;
+        const banner = document.getElementById("activeSkillBanner");
+        if (s.active_skill_name) {
+          banner.textContent = `Running: ${s.active_skill_name} -> ${s.active_primitive || ""}`;
+          banner.style.color = "#2563eb";
+        } else {
+          banner.textContent = "Active Inference (Fast Path)";
+          banner.style.color = "";
+        }
+        const listEl = document.getElementById("skillList");
+        listEl.innerHTML = "";
+        if (!skills.length) {
+          listEl.innerHTML = `<div class="meta-note">No verified skills yet.</div>`;
+        } else {
+          for (let i = skills.length - 1; i >= 0; i--) {
+            const name = skills[i];
+            const uses = Number(counts[name] || 1);
+            const item = document.createElement("div");
+            item.className = "skill-item" + (name === s.active_skill_name ? " active" : "");
+            item.innerHTML =
+              `<span>${name}</span>` +
+              `<span class="tag ${uses > 1 ? "reused" : "new"}">${uses > 1 ? "REUSED x" + uses : "NEW"}</span>`;
+            listEl.appendChild(item);
+          }
+        }
+
+        document.getElementById("vfeNote").textContent =
+          `current: ${Number(s.vfe || 0).toFixed(2)} | trigger: 3.20`;
+        document.getElementById("modeNote").textContent = s.mode || "active_inference";
+        document.getElementById("posNote").textContent =
+          `pet (${Number(s.x).toFixed(2)}, ${Number(s.y).toFixed(2)}) z=${Number(s.elevation).toFixed(2)}m`;
+
+        drawVFE();
+        drawPolicy(s.policy_probs || {});
+        drawRoom(s);
+      }
+
+      function drawVFE() {
+        const canvas = document.getElementById("vfeCanvas");
+        const ctx = canvas.getContext("2d");
+        const w = canvas.width, h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const padL = 36, padR = 12, padT = 14, padB = 20;
+        const pw = w - padL - padR, ph = h - padT - padB;
+        const maxVal = Math.max(4.5, ...vfeHistory.map((v) => v * 1.15));
+
+        ctx.strokeStyle = "#e2e8f0";
+        ctx.lineWidth = 1;
+        for (let i = 0; i <= 3; i++) {
+          const y = padT + (ph * i) / 3;
+          ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(w - padR, y); ctx.stroke();
+          ctx.fillStyle = "#64748b";
+          ctx.font = "10px monospace";
+          ctx.fillText((maxVal * (1 - i / 3)).toFixed(1), 6, y + 3);
+        }
+
+        // Trigger threshold line (3.2)
+        const ty = padT + ph * (1 - Math.min(1, 3.2 / maxVal));
+        ctx.save();
+        ctx.setLineDash([5, 4]);
+        ctx.strokeStyle = "#d97706";
+        ctx.beginPath(); ctx.moveTo(padL, ty); ctx.lineTo(w - padR, ty); ctx.stroke();
+        ctx.restore();
+
+        if (vfeHistory.length >= 2) {
+          ctx.beginPath();
+          vfeHistory.forEach((v, i) => {
+            const x = padL + (i / (vfeHistory.length - 1)) * pw;
+            const y = padT + ph * (1 - Math.min(1, v / maxVal));
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          });
+          ctx.strokeStyle = "#2563eb";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          ctx.lineTo(padL + pw, padT + ph);
+          ctx.lineTo(padL, padT + ph);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(37, 99, 235, 0.12)";
+          ctx.fill();
+        }
+      }
+
+      function drawPolicy(probs) {
+        const canvas = document.getElementById("policyCanvas");
+        const ctx = canvas.getContext("2d");
+        const w = canvas.width, h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const padL = 104, padR = 46, padT = 10, padB = 10;
+        const barW = w - padL - padR;
+        const rowH = (h - padT - padB) / ACTION_ORDER.length;
+
+        ACTION_ORDER.forEach((name, idx) => {
+          const p = Math.max(0, Math.min(1, Number(probs[name] || 0)));
+          const y = padT + idx * rowH;
+
+          ctx.fillStyle = "#334155";
+          ctx.font = "11px monospace";
+          ctx.textAlign = "right";
+          ctx.fillText(name, padL - 8, y + rowH * 0.66);
+
+          ctx.fillStyle = "#e9eef5";
+          ctx.fillRect(padL, y + 4, barW, rowH - 8);
+
+          ctx.fillStyle = p > 0.35 ? "#0f766e" : "#3b82f6";
+          ctx.fillRect(padL, y + 4, barW * p, rowH - 8);
+
+          ctx.fillStyle = "#475569";
+          ctx.textAlign = "left";
+          ctx.fillText(`${(p * 100).toFixed(0)}%`, padL + barW + 6, y + rowH * 0.66);
+        });
+      }
+
+      function drawRoom(s) {
+        const canvas = roomCanvas;
+        const ctx = canvas.getContext("2d");
+        const w = canvas.width, h = canvas.height;
+        const pad = 18;
+        const span = w - pad * 2;
+        const toPx = (simX, simY) => [pad + (simX / 6) * span, pad + (simY / 6) * span];
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "#fafbfd";
+        ctx.fillRect(pad, pad, span, span);
+
+        // 1m CAD grid
+        ctx.strokeStyle = "#e2e8f0";
+        ctx.lineWidth = 1;
+        for (let m = 0; m <= 6; m++) {
+          const p = pad + (m / 6) * span;
+          ctx.beginPath(); ctx.moveTo(p, pad); ctx.lineTo(p, pad + span); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(pad, p); ctx.lineTo(pad + span, p); ctx.stroke();
+        }
+
+        // Pet motion trail
+        if (trail.length >= 2) {
+          ctx.beginPath();
+          trail.forEach(([tx, ty], i) => {
+            const [px, py] = toPx(tx, ty);
+            if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          });
+          ctx.strokeStyle = "rgba(15, 118, 110, 0.35)";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        // Smart Objects
+        for (const obj of s.world_objects || []) {
+          const [ox, oy] = toPx(obj.x, obj.y);
+          if (obj.obj_id === "sunbeam") {
+            ctx.fillStyle = "rgba(250, 204, 21, 0.28)";
+            ctx.beginPath(); ctx.arc(ox, oy, 22, 0, Math.PI * 2); ctx.fill();
+          } else if (obj.obj_id === "radiator") {
+            ctx.fillStyle = "rgba(220, 88, 66, 0.16)";
+            ctx.beginPath(); ctx.arc(ox, oy, 26, 0, Math.PI * 2); ctx.fill();
+          }
+
+          ctx.fillStyle = obj.is_user ? "#2563eb" : (!obj.is_intact ? "#dc5842" : "#334155");
+          ctx.beginPath();
+          ctx.arc(ox, oy, obj.is_user ? 7 : 5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = obj.is_user ? "#1d4ed8" : "#475569";
+          ctx.font = "9.5px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText(obj.obj_id.replace("_", " "), ox, oy - 9);
+        }
+
+        // Target line & Pet marker
+        const [px, py] = toPx(s.x, s.y);
+        const targetObj = (s.world_objects || []).find((o) => o.obj_id === s.target_object_id);
+        if (targetObj) {
+          const [tx, ty] = toPx(targetObj.x, targetObj.y);
+          ctx.save();
+          ctx.setLineDash([4, 3]);
+          ctx.strokeStyle = "#0f766e";
+          ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(tx, ty); ctx.stroke();
+          ctx.restore();
+        }
+
+        const inverted = !!(s.anomaly_flags && s.anomaly_flags.gravity_inverted);
+        ctx.fillStyle = inverted ? "#7c3aed" : "#0f766e";
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(px, py, 7.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      }
+
+      connectWS();
+    })();
+  </script>
+</body>
+</html>

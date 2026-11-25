@@ -1,0 +1,146 @@
+{
+  "runtime": {
+    "python_version": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "seed": 42,
+    "total_elapsed_sec": 39.29
+  },
+  "archive_evaluation": {
+    "archive_metadata": {
+      "algorithm": "CMA-MAE",
+      "grid_dims": [
+        10,
+        10
+      ],
+      "measure_names": [
+        "human_engagement",
+        "activity_entropy"
+      ],
+      "measure_ranges": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.65
+        ]
+      ],
+      "coverage": 0.75,
+      "qd_score": 59.3756,
+      "num_elites": 75,
+      "total_evaluations": 2304,
+      "elapsed_sec": 14.86
+    },
+    "evaluated_elites": 75,
+    "eval_ticks_per_elite": 500,
+    "eval_elapsed_sec": 4.367,
+    "throughput_ticks_per_sec": 8587.0,
+    "coverage": 0.75,
+    "qd_score": 59.3756,
+    "num_elites_in_archive": 75,
+    "archetype_counts": {
+      "anomalous_entity": 21,
+      "warmth_camper": 14,
+      "velcro_companion": 13,
+      "staring_observer": 12,
+      "restless_explorer": 6,
+      "hairless_heat_seeker": 5,
+      "balanced_hybrid": 2,
+      "chaotic_gremlin": 2
+    },
+    "dominant_action_counts": {
+      "radiator": 23,
+      "stare_user": 22,
+      "rub_user": 17,
+      "laptop": 12,
+      "chaos_play": 1
+    },
+    "num_distinct_archetypes": 8,
+    "action_entropy_bits": {
+      "mean": 0.9972,
+      "std": 0.494,
+      "min": 0.2043,
+      "max": 2.0928
+    },
+    "silhouette_score": -0.0594,
+    "silhouette_clusters_used": 8,
+    "silhouette_samples_used": 75,
+    "dominant_action_silhouette_score": 0.2217,
+    "dominant_action_clusters_used": 4,
+    "mean_pairwise_behavioral_l2": 5.0816,
+    "mean_pairwise_policy_l2": 0.8031,
+    "mean_viability_objective": 0.7806,
+    "mean_vfe": 5.2629,
+    "projection_method": "umap"
+  },
+  "ablation_study": {
+    "twin_ticks": 240,
+    "neuro_ticks": 160,
+    "configs": {
+      "aif_only": {
+        "label": "AIF Only",
+        "twin_trust_calm": 0.0,
+        "twin_trust_erratic": 0.0,
+        "twin_trust_divergence": 0.0,
+        "mean_dist_calm_m": 0.0108,
+        "mean_dist_erratic_m": 0.0108,
+        "twin_spatial_divergence_m": 0.0,
+        "policy_l1_divergence": 0.0,
+        "skills_synthesized": 0,
+        "skill_reuses": 0,
+        "illegal_anomaly_activations": 0,
+        "symbolic_safety_rate": 1.0,
+        "mean_vfe": 7.6641,
+        "mean_viability": 0.7378
+      },
+      "aif_pad_memory": {
+        "label": "AIF + PAD + Memory",
+        "twin_trust_calm": 0.7601,
+        "twin_trust_erratic": -0.922,
+        "twin_trust_divergence": 1.6821,
+        "mean_dist_calm_m": 0.0241,
+        "mean_dist_erratic_m": 2.8141,
+        "twin_spatial_divergence_m": 2.7901,
+        "policy_l1_divergence": 1.9667,
+        "skills_synthesized": 0,
+        "skill_reuses": 0,
+        "illegal_anomaly_activations": 0,
+        "symbolic_safety_rate": 1.0,
+        "mean_vfe": 5.0313,
+        "mean_viability": 0.7876,
+        "sqlite_vec_retrieval_ms": 1.103
+      },
+      "full_neuro_symbolic": {
+        "label": "Full Neuro-Symbolic",
+        "twin_trust_calm": 0.753,
+        "twin_trust_erratic": -0.9077,
+        "twin_trust_divergence": 1.6607,
+        "mean_dist_calm_m": 0.4666,
+        "mean_dist_erratic_m": 2.8524,
+        "twin_spatial_divergence_m": 2.3858,
+        "policy_l1_divergence": 1.8,
+        "skills_synthesized": 5,
+        "skill_reuses": 3,
+        "grounded_skills_synthesized": 7,
+        "grounded_skill_reuses": 2,
+        "impossible_anomaly_ticks": 120,
+        "impossible_skill_ticks": 49,
+        "illegal_anomaly_activations": 0,
+        "symbolic_safety_rate": 1.0,
+        "mean_vfe": 4.8568,
+        "mean_viability": 0.7841
+      }
+    }
+  },
+  "exports": {
+    "summary_json": "benchmarks\\results\\benchmark_summary.json",
+    "elite_csv": "benchmarks\\results\\elite_metrics.csv",
+    "figures": [
+      "docs\\figures\\personality_atlas.png",
+      "docs\\figures\\umap_personality_clusters.png",
+      "docs\\figures\\twin_divergence.png",
+      "docs\\figures\\ablation_comparison.png"
+    ]
+  }
+}

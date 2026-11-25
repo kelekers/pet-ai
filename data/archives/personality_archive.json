@@ -1,0 +1,3480 @@
+{
+  "metadata": {
+    "algorithm": "CMA-MAE",
+    "grid_dims": [
+      10,
+      10
+    ],
+    "measure_names": [
+      "human_engagement",
+      "activity_entropy"
+    ],
+    "measure_ranges": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.65
+      ]
+    ],
+    "coverage": 0.75,
+    "qd_score": 59.3756,
+    "num_elites": 75,
+    "total_evaluations": 2304,
+    "elapsed_sec": 14.86
+  },
+  "elites": [
+    {
+      "cell_index": 0,
+      "archetype": "hairless_heat_seeker",
+      "dominant_action": "radiator",
+      "objective": 0.9315,
+      "measures": {
+        "human_engagement": 0.0,
+        "activity_entropy": -0.0,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9972,
+        "mean_vfe": 2.4839,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 1.0,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.9623,
+        "extraversion": 0.6768,
+        "dominance": 0.7119,
+        "impulsiveness": 0.3209,
+        "agreeableness": 0.5522,
+        "curiosity": 0.7192,
+        "laziness": 0.7604,
+        "attachment": 0.3424,
+        "chaos": 0.0391,
+        "fur_density": 0.1349,
+        "body_mass": 0.5131,
+        "agility": 0.9101,
+        "metabolism": 0.9495,
+        "vocal_pitch": 0.5159,
+        "gravity_defiance": 0.3614,
+        "spatial_phase": 0.5184,
+        "mimicry_drive": 0.6036,
+        "sentience_glimmer": 0.1595
+      }
+    },
+    {
+      "cell_index": 2,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.9164,
+      "measures": {
+        "human_engagement": 0.0353,
+        "activity_entropy": 0.1327,
+        "disruption_rate": 0.015
+      },
+      "metrics": {
+        "mean_warmth": 0.9966,
+        "mean_vfe": 3.2479,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.9375,
+          "laptop": 0.0375,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.7197,
+        "extraversion": 0.4331,
+        "dominance": 0.7378,
+        "impulsiveness": 0.1327,
+        "agreeableness": 0.429,
+        "curiosity": 0.3848,
+        "laziness": 0.2671,
+        "attachment": 0.4001,
+        "chaos": 0.1993,
+        "fur_density": 0.4207,
+        "body_mass": 0.5279,
+        "agility": 0.9047,
+        "metabolism": 0.9824,
+        "vocal_pitch": 0.8992,
+        "gravity_defiance": 0.4106,
+        "spatial_phase": 0.6109,
+        "mimicry_drive": 0.5371,
+        "sentience_glimmer": 0.2396
+      }
+    },
+    {
+      "cell_index": 3,
+      "archetype": "anomalous_entity",
+      "dominant_action": "radiator",
+      "objective": 0.9132,
+      "measures": {
+        "human_engagement": 0.0831,
+        "activity_entropy": 0.1978,
+        "disruption_rate": 0.045
+      },
+      "metrics": {
+        "mean_warmth": 0.9962,
+        "mean_vfe": 3.0429,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.8875,
+          "laptop": 0.0875,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.9594,
+        "extraversion": 0.4122,
+        "dominance": 0.9361,
+        "impulsiveness": 0.1602,
+        "agreeableness": 0.5595,
+        "curiosity": 0.7102,
+        "laziness": 0.5022,
+        "attachment": 0.2671,
+        "chaos": 0.2829,
+        "fur_density": 0.3069,
+        "body_mass": 0.4884,
+        "agility": 0.9402,
+        "metabolism": 0.8715,
+        "vocal_pitch": 0.9925,
+        "gravity_defiance": 0.309,
+        "spatial_phase": 0.3738,
+        "mimicry_drive": 0.8563,
+        "sentience_glimmer": 0.4222
+      }
+    },
+    {
+      "cell_index": 5,
+      "archetype": "anomalous_entity",
+      "dominant_action": "radiator",
+      "objective": 0.7668,
+      "measures": {
+        "human_engagement": 0.0569,
+        "activity_entropy": 0.3898,
+        "disruption_rate": 0.0525
+      },
+      "metrics": {
+        "mean_warmth": 0.9664,
+        "mean_vfe": 6.9085,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4875,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.4813
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2556,
+        "extraversion": 0.0926,
+        "dominance": 0.5695,
+        "impulsiveness": 0.2912,
+        "agreeableness": 0.3816,
+        "curiosity": 0.1177,
+        "laziness": 0.4307,
+        "attachment": 0.4977,
+        "chaos": 0.5763,
+        "fur_density": 0.95,
+        "body_mass": 0.4273,
+        "agility": 0.0712,
+        "metabolism": 0.8477,
+        "vocal_pitch": 0.658,
+        "gravity_defiance": 0.4375,
+        "spatial_phase": 0.9545,
+        "mimicry_drive": 0.5061,
+        "sentience_glimmer": 0.7274
+      }
+    },
+    {
+      "cell_index": 13,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.9016,
+      "measures": {
+        "human_engagement": 0.1013,
+        "activity_entropy": 0.2128,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9929,
+        "mean_vfe": 3.564,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.8813,
+          "laptop": 0.075,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0437,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.1217,
+        "extraversion": 0.5595,
+        "dominance": 0.3971,
+        "impulsiveness": 0.5459,
+        "agreeableness": 0.4678,
+        "curiosity": 0.3851,
+        "laziness": 0.6287,
+        "attachment": 0.3027,
+        "chaos": 0.6537,
+        "fur_density": 0.4554,
+        "body_mass": 0.4939,
+        "agility": 0.0047,
+        "metabolism": 0.4269,
+        "vocal_pitch": 0.5483,
+        "gravity_defiance": 0.2412,
+        "spatial_phase": 0.5851,
+        "mimicry_drive": 0.4986,
+        "sentience_glimmer": 0.2168
+      }
+    },
+    {
+      "cell_index": 45,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.8513,
+      "measures": {
+        "human_engagement": 0.4347,
+        "activity_entropy": 0.3552,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9788,
+        "mean_vfe": 5.4454,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.6687,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3989,
+        "extraversion": 0.0731,
+        "dominance": 0.8098,
+        "impulsiveness": 0.4585,
+        "agreeableness": 0.4275,
+        "curiosity": 0.2868,
+        "laziness": 0.5849,
+        "attachment": 0.6194,
+        "chaos": 0.5191,
+        "fur_density": 0.8704,
+        "body_mass": 0.5997,
+        "agility": 0.0477,
+        "metabolism": 0.6284,
+        "vocal_pitch": 0.8729,
+        "gravity_defiance": 0.7062,
+        "spatial_phase": 0.6323,
+        "mimicry_drive": 0.5111,
+        "sentience_glimmer": 0.4232
+      }
+    },
+    {
+      "cell_index": 53,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.7565,
+      "measures": {
+        "human_engagement": 0.5862,
+        "activity_entropy": 0.2201,
+        "disruption_rate": 0.0475
+      },
+      "metrics": {
+        "mean_warmth": 0.9168,
+        "mean_vfe": 5.223,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0437,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.875,
+          "rub_user": 0.0,
+          "chaos_play": 0.0813
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2588,
+        "extraversion": 0.2259,
+        "dominance": 0.3001,
+        "impulsiveness": 0.5149,
+        "agreeableness": 0.3424,
+        "curiosity": 0.5398,
+        "laziness": 0.5165,
+        "attachment": 0.1471,
+        "chaos": 0.8132,
+        "fur_density": 0.789,
+        "body_mass": 0.6592,
+        "agility": 0.2957,
+        "metabolism": 0.6877,
+        "vocal_pitch": 0.1611,
+        "gravity_defiance": 0.8586,
+        "spatial_phase": 0.4303,
+        "mimicry_drive": 0.4585,
+        "sentience_glimmer": 0.122
+      }
+    },
+    {
+      "cell_index": 54,
+      "archetype": "anomalous_entity",
+      "dominant_action": "laptop",
+      "objective": 0.8496,
+      "measures": {
+        "human_engagement": 0.5159,
+        "activity_entropy": 0.2869,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9806,
+        "mean_vfe": 5.3471,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.175,
+          "laptop": 0.7937,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5808,
+        "extraversion": 0.1602,
+        "dominance": 0.7187,
+        "impulsiveness": 0.6896,
+        "agreeableness": 0.6167,
+        "curiosity": 0.324,
+        "laziness": 0.3737,
+        "attachment": 0.571,
+        "chaos": 0.2392,
+        "fur_density": 0.6894,
+        "body_mass": 0.5712,
+        "agility": 0.1239,
+        "metabolism": 0.861,
+        "vocal_pitch": 0.7551,
+        "gravity_defiance": 0.4147,
+        "spatial_phase": 0.9412,
+        "mimicry_drive": 0.221,
+        "sentience_glimmer": 0.6918
+      }
+    },
+    {
+      "cell_index": 55,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7963,
+      "measures": {
+        "human_engagement": 0.5975,
+        "activity_entropy": 0.3672,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9944,
+        "mean_vfe": 5.5099,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3688,
+          "laptop": 0.0,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.6062,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.634,
+        "extraversion": 0.6241,
+        "dominance": 0.4975,
+        "impulsiveness": 0.021,
+        "agreeableness": 0.6227,
+        "curiosity": 0.383,
+        "laziness": 0.2418,
+        "attachment": 0.3541,
+        "chaos": 0.4022,
+        "fur_density": 0.5766,
+        "body_mass": 0.6897,
+        "agility": 0.6977,
+        "metabolism": 0.859,
+        "vocal_pitch": 0.3851,
+        "gravity_defiance": 0.1636,
+        "spatial_phase": 0.4799,
+        "mimicry_drive": 0.3361,
+        "sentience_glimmer": 0.0981
+      }
+    },
+    {
+      "cell_index": 60,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.8037,
+      "measures": {
+        "human_engagement": 0.65,
+        "activity_entropy": -0.0,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.7006,
+        "mean_vfe": 3.1814,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 1.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.473,
+        "extraversion": 0.8853,
+        "dominance": 0.3151,
+        "impulsiveness": 0.633,
+        "agreeableness": 0.7337,
+        "curiosity": 0.5792,
+        "laziness": 0.8337,
+        "attachment": 0.2399,
+        "chaos": 0.3562,
+        "fur_density": 0.9876,
+        "body_mass": 0.6326,
+        "agility": 0.3284,
+        "metabolism": 0.949,
+        "vocal_pitch": 0.2762,
+        "gravity_defiance": 0.0199,
+        "spatial_phase": 0.6801,
+        "mimicry_drive": 0.9051,
+        "sentience_glimmer": 0.1395
+      }
+    },
+    {
+      "cell_index": 61,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.8071,
+      "measures": {
+        "human_engagement": 0.6134,
+        "activity_entropy": 0.1227,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9102,
+        "mean_vfe": 5.5106,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.025,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.9438,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.43,
+        "extraversion": 0.3838,
+        "dominance": 0.187,
+        "impulsiveness": 0.3346,
+        "agreeableness": 0.2897,
+        "curiosity": 0.3498,
+        "laziness": 0.6827,
+        "attachment": 0.2307,
+        "chaos": 0.3892,
+        "fur_density": 0.9903,
+        "body_mass": 0.8527,
+        "agility": 0.3296,
+        "metabolism": 0.9092,
+        "vocal_pitch": 0.1116,
+        "gravity_defiance": 0.6894,
+        "spatial_phase": 0.5026,
+        "mimicry_drive": 0.1198,
+        "sentience_glimmer": 0.0355
+      }
+    },
+    {
+      "cell_index": 63,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.8006,
+      "measures": {
+        "human_engagement": 0.6094,
+        "activity_entropy": 0.2515,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.8767,
+        "mean_vfe": 5.3968,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0312,
+          "laptop": 0.0688,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.8688,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3005,
+        "extraversion": 0.4593,
+        "dominance": 0.4467,
+        "impulsiveness": 0.6257,
+        "agreeableness": 0.3831,
+        "curiosity": 0.2149,
+        "laziness": 0.387,
+        "attachment": 0.4218,
+        "chaos": 0.2595,
+        "fur_density": 0.7891,
+        "body_mass": 0.4899,
+        "agility": 0.205,
+        "metabolism": 0.8275,
+        "vocal_pitch": 0.44,
+        "gravity_defiance": 0.3106,
+        "spatial_phase": 0.8551,
+        "mimicry_drive": 0.8082,
+        "sentience_glimmer": 0.8944
+      }
+    },
+    {
+      "cell_index": 64,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.8021,
+      "measures": {
+        "human_engagement": 0.6094,
+        "activity_entropy": 0.3103,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.7754,
+        "mean_vfe": 4.5519,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0312,
+          "laptop": 0.125,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.8125,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.4783,
+        "extraversion": 0.1901,
+        "dominance": 0.489,
+        "impulsiveness": 0.175,
+        "agreeableness": 0.552,
+        "curiosity": 0.4583,
+        "laziness": 0.3813,
+        "attachment": 0.3959,
+        "chaos": 0.4818,
+        "fur_density": 0.9018,
+        "body_mass": 0.567,
+        "agility": 0.1754,
+        "metabolism": 0.8481,
+        "vocal_pitch": 0.9279,
+        "gravity_defiance": 0.0667,
+        "spatial_phase": 0.8573,
+        "mimicry_drive": 0.4033,
+        "sentience_glimmer": 0.4839
+      }
+    },
+    {
+      "cell_index": 71,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7724,
+      "measures": {
+        "human_engagement": 0.7809,
+        "activity_entropy": 0.109,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.8951,
+        "mean_vfe": 6.4172,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0125,
+          "food_bowl": 0.0375,
+          "cardboard_box": 0.0,
+          "stare_user": 0.95,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.722,
+        "extraversion": 0.5917,
+        "dominance": 0.9231,
+        "impulsiveness": 0.6286,
+        "agreeableness": 0.4518,
+        "curiosity": 0.6192,
+        "laziness": 0.419,
+        "attachment": 0.3501,
+        "chaos": 0.1113,
+        "fur_density": 0.8215,
+        "body_mass": 0.3802,
+        "agility": 0.8905,
+        "metabolism": 0.8133,
+        "vocal_pitch": 0.5734,
+        "gravity_defiance": 0.2422,
+        "spatial_phase": 0.2711,
+        "mimicry_drive": 0.3757,
+        "sentience_glimmer": 0.0087
+      }
+    },
+    {
+      "cell_index": 72,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7709,
+      "measures": {
+        "human_engagement": 0.7812,
+        "activity_entropy": 0.1308,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.8766,
+        "mean_vfe": 5.8206,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0,
+          "food_bowl": 0.0437,
+          "cardboard_box": 0.0,
+          "stare_user": 0.9375,
+          "rub_user": 0.0188,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.542,
+        "extraversion": 0.7063,
+        "dominance": 0.3268,
+        "impulsiveness": 0.1641,
+        "agreeableness": 0.6084,
+        "curiosity": 0.4466,
+        "laziness": 0.3082,
+        "attachment": 0.5183,
+        "chaos": 0.4156,
+        "fur_density": 0.9959,
+        "body_mass": 0.61,
+        "agility": 0.3609,
+        "metabolism": 0.9958,
+        "vocal_pitch": 0.5644,
+        "gravity_defiance": 0.3715,
+        "spatial_phase": 0.6853,
+        "mimicry_drive": 0.5273,
+        "sentience_glimmer": 0.7695
+      }
+    },
+    {
+      "cell_index": 79,
+      "archetype": "restless_explorer",
+      "dominant_action": "rub_user",
+      "objective": 0.7506,
+      "measures": {
+        "human_engagement": 0.7625,
+        "activity_entropy": 0.6469,
+        "disruption_rate": 0.165
+      },
+      "metrics": {
+        "mean_warmth": 0.9929,
+        "mean_vfe": 5.0472,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.1938,
+          "laptop": 0.1938,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.2375,
+          "rub_user": 0.375,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6317,
+        "extraversion": 0.7581,
+        "dominance": 0.3545,
+        "impulsiveness": 0.9707,
+        "agreeableness": 0.8931,
+        "curiosity": 0.7784,
+        "laziness": 0.1946,
+        "attachment": 0.4667,
+        "chaos": 0.0438,
+        "fur_density": 0.1543,
+        "body_mass": 0.683,
+        "agility": 0.7448,
+        "metabolism": 0.9675,
+        "vocal_pitch": 0.3258,
+        "gravity_defiance": 0.0704,
+        "spatial_phase": 0.0284,
+        "mimicry_drive": 0.0195,
+        "sentience_glimmer": 0.0714
+      }
+    },
+    {
+      "cell_index": 80,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.763,
+      "measures": {
+        "human_engagement": 0.8141,
+        "activity_entropy": 0.0323,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.8032,
+        "mean_vfe": 5.4248,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0125,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.9875,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.4058,
+        "extraversion": 0.2137,
+        "dominance": 0.5659,
+        "impulsiveness": 0.5083,
+        "agreeableness": 0.6479,
+        "curiosity": 0.4856,
+        "laziness": 0.4335,
+        "attachment": 0.3922,
+        "chaos": 0.2543,
+        "fur_density": 0.7968,
+        "body_mass": 0.7573,
+        "agility": 0.3657,
+        "metabolism": 0.8826,
+        "vocal_pitch": 0.5743,
+        "gravity_defiance": 0.6179,
+        "spatial_phase": 0.6086,
+        "mimicry_drive": 0.781,
+        "sentience_glimmer": 0.9743
+      }
+    },
+    {
+      "cell_index": 90,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7578,
+      "measures": {
+        "human_engagement": 1.0,
+        "activity_entropy": -0.0,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9946,
+        "mean_vfe": 4.337,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 1.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2954,
+        "extraversion": 0.4585,
+        "dominance": 0.4423,
+        "impulsiveness": 0.3019,
+        "agreeableness": 0.9184,
+        "curiosity": 0.7813,
+        "laziness": 0.1106,
+        "attachment": 0.997,
+        "chaos": 0.8792,
+        "fur_density": 0.2839,
+        "body_mass": 0.8369,
+        "agility": 0.1064,
+        "metabolism": 0.9991,
+        "vocal_pitch": 0.6657,
+        "gravity_defiance": 0.0136,
+        "spatial_phase": 0.1346,
+        "mimicry_drive": 0.0043,
+        "sentience_glimmer": 0.0361
+      }
+    },
+    {
+      "cell_index": 93,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7363,
+      "measures": {
+        "human_engagement": 0.9956,
+        "activity_entropy": 0.2134,
+        "disruption_rate": 0.345
+      },
+      "metrics": {
+        "mean_warmth": 0.9925,
+        "mean_vfe": 7.9463,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.1625,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.8375,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3505,
+        "extraversion": 0.7008,
+        "dominance": 0.7774,
+        "impulsiveness": 0.7268,
+        "agreeableness": 0.5246,
+        "curiosity": 0.6277,
+        "laziness": 0.3721,
+        "attachment": 0.2947,
+        "chaos": 0.4267,
+        "fur_density": 0.6431,
+        "body_mass": 0.826,
+        "agility": 0.4441,
+        "metabolism": 0.6697,
+        "vocal_pitch": 0.3033,
+        "gravity_defiance": 0.7173,
+        "spatial_phase": 0.7572,
+        "mimicry_drive": 0.6179,
+        "sentience_glimmer": 0.3755
+      }
+    },
+    {
+      "cell_index": 94,
+      "archetype": "warmth_camper",
+      "dominant_action": "laptop",
+      "objective": 0.7852,
+      "measures": {
+        "human_engagement": 1.0,
+        "activity_entropy": 0.2601,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.987,
+        "mean_vfe": 5.3111,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.7688,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.2313,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5404,
+        "extraversion": 0.5658,
+        "dominance": 0.4505,
+        "impulsiveness": 0.3086,
+        "agreeableness": 0.4837,
+        "curiosity": 0.415,
+        "laziness": 0.2356,
+        "attachment": 0.5611,
+        "chaos": 0.2611,
+        "fur_density": 0.4053,
+        "body_mass": 0.5318,
+        "agility": 0.134,
+        "metabolism": 0.6017,
+        "vocal_pitch": 0.7603,
+        "gravity_defiance": 0.4397,
+        "spatial_phase": 0.6733,
+        "mimicry_drive": 0.2542,
+        "sentience_glimmer": 0.6621
+      }
+    },
+    {
+      "cell_index": 95,
+      "archetype": "warmth_camper",
+      "dominant_action": "laptop",
+      "objective": 0.7535,
+      "measures": {
+        "human_engagement": 0.9291,
+        "activity_entropy": 0.3453,
+        "disruption_rate": 0.0263
+      },
+      "metrics": {
+        "mean_warmth": 0.9679,
+        "mean_vfe": 5.67,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.7438,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.1875,
+          "chaos_play": 0.0688
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5754,
+        "extraversion": 0.8506,
+        "dominance": 0.356,
+        "impulsiveness": 0.6001,
+        "agreeableness": 0.619,
+        "curiosity": 0.6643,
+        "laziness": 0.1411,
+        "attachment": 0.4656,
+        "chaos": 0.785,
+        "fur_density": 0.5039,
+        "body_mass": 0.7154,
+        "agility": 0.1093,
+        "metabolism": 0.3282,
+        "vocal_pitch": 0.5534,
+        "gravity_defiance": 0.3179,
+        "spatial_phase": 0.6437,
+        "mimicry_drive": 0.7404,
+        "sentience_glimmer": 0.344
+      }
+    },
+    {
+      "cell_index": 1,
+      "archetype": "hairless_heat_seeker",
+      "dominant_action": "radiator",
+      "objective": 0.9225,
+      "measures": {
+        "human_engagement": 0.0312,
+        "activity_entropy": 0.0669,
+        "disruption_rate": 0.015
+      },
+      "metrics": {
+        "mean_warmth": 0.997,
+        "mean_vfe": 2.7818,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.9688,
+          "laptop": 0.0312,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.7601,
+        "extraversion": 0.5819,
+        "dominance": 0.5728,
+        "impulsiveness": 0.0575,
+        "agreeableness": 0.4395,
+        "curiosity": 0.5231,
+        "laziness": 0.4966,
+        "attachment": 0.4329,
+        "chaos": 0.2662,
+        "fur_density": 0.3321,
+        "body_mass": 0.6706,
+        "agility": 0.8791,
+        "metabolism": 0.8453,
+        "vocal_pitch": 0.5434,
+        "gravity_defiance": 0.2885,
+        "spatial_phase": 0.4478,
+        "mimicry_drive": 0.3416,
+        "sentience_glimmer": 0.2047
+      }
+    },
+    {
+      "cell_index": 14,
+      "archetype": "anomalous_entity",
+      "dominant_action": "radiator",
+      "objective": 0.8987,
+      "measures": {
+        "human_engagement": 0.1584,
+        "activity_entropy": 0.2845,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9952,
+        "mean_vfe": 3.4076,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.75,
+          "laptop": 0.2438,
+          "food_bowl": 0.0063,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2896,
+        "extraversion": 0.2591,
+        "dominance": 0.4924,
+        "impulsiveness": 0.4554,
+        "agreeableness": 0.6045,
+        "curiosity": 0.3282,
+        "laziness": 0.4315,
+        "attachment": 0.3105,
+        "chaos": 0.432,
+        "fur_density": 0.3886,
+        "body_mass": 0.3992,
+        "agility": 0.1961,
+        "metabolism": 0.9033,
+        "vocal_pitch": 0.8253,
+        "gravity_defiance": 0.3289,
+        "spatial_phase": 0.8683,
+        "mimicry_drive": 0.351,
+        "sentience_glimmer": 0.8229
+      }
+    },
+    {
+      "cell_index": 65,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7988,
+      "measures": {
+        "human_engagement": 0.6094,
+        "activity_entropy": 0.3458,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.8663,
+        "mean_vfe": 5.3818,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0312,
+          "laptop": 0.1688,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.7688,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6806,
+        "extraversion": 0.2991,
+        "dominance": 0.6615,
+        "impulsiveness": 0.2273,
+        "agreeableness": 0.4955,
+        "curiosity": 0.5539,
+        "laziness": 0.339,
+        "attachment": 0.2616,
+        "chaos": 0.2558,
+        "fur_density": 0.6219,
+        "body_mass": 0.0303,
+        "agility": 0.2368,
+        "metabolism": 0.914,
+        "vocal_pitch": 0.4251,
+        "gravity_defiance": 0.1371,
+        "spatial_phase": 0.5893,
+        "mimicry_drive": 0.444,
+        "sentience_glimmer": 0.7437
+      }
+    },
+    {
+      "cell_index": 66,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7924,
+      "measures": {
+        "human_engagement": 0.6203,
+        "activity_entropy": 0.4211,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9946,
+        "mean_vfe": 4.9497,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3688,
+          "laptop": 0.0688,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.5625,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.7216,
+        "extraversion": 0.7736,
+        "dominance": 0.857,
+        "impulsiveness": 0.1606,
+        "agreeableness": 0.4215,
+        "curiosity": 0.5231,
+        "laziness": 0.3679,
+        "attachment": 0.5559,
+        "chaos": 0.3221,
+        "fur_density": 0.2576,
+        "body_mass": 0.3506,
+        "agility": 0.7921,
+        "metabolism": 0.691,
+        "vocal_pitch": 0.6545,
+        "gravity_defiance": 0.3988,
+        "spatial_phase": 0.2305,
+        "mimicry_drive": 0.5857,
+        "sentience_glimmer": 0.0299
+      }
+    },
+    {
+      "cell_index": 67,
+      "archetype": "hairless_heat_seeker",
+      "dominant_action": "laptop",
+      "objective": 0.7879,
+      "measures": {
+        "human_engagement": 0.6147,
+        "activity_entropy": 0.5149,
+        "disruption_rate": 0.42
+      },
+      "metrics": {
+        "mean_warmth": 0.9942,
+        "mean_vfe": 5.0537,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.375,
+          "laptop": 0.4563,
+          "food_bowl": 0.0125,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.1562,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6308,
+        "extraversion": 0.87,
+        "dominance": 0.9194,
+        "impulsiveness": 0.2804,
+        "agreeableness": 0.6884,
+        "curiosity": 0.4612,
+        "laziness": 0.3047,
+        "attachment": 0.3402,
+        "chaos": 0.2672,
+        "fur_density": 0.1854,
+        "body_mass": 0.6221,
+        "agility": 0.7548,
+        "metabolism": 0.8092,
+        "vocal_pitch": 0.6107,
+        "gravity_defiance": 0.2065,
+        "spatial_phase": 0.3843,
+        "mimicry_drive": 0.7335,
+        "sentience_glimmer": 0.2959
+      }
+    },
+    {
+      "cell_index": 12,
+      "archetype": "hairless_heat_seeker",
+      "dominant_action": "radiator",
+      "objective": 0.8902,
+      "measures": {
+        "human_engagement": 0.125,
+        "activity_entropy": 0.1812,
+        "disruption_rate": 0.075
+      },
+      "metrics": {
+        "mean_warmth": 0.996,
+        "mean_vfe": 3.9178,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.875,
+          "laptop": 0.125,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.8534,
+        "extraversion": 0.3737,
+        "dominance": 0.8221,
+        "impulsiveness": 0.4014,
+        "agreeableness": 0.7913,
+        "curiosity": 0.8919,
+        "laziness": 0.5758,
+        "attachment": 0.3032,
+        "chaos": 0.0125,
+        "fur_density": 0.1026,
+        "body_mass": 0.3564,
+        "agility": 0.9039,
+        "metabolism": 0.5089,
+        "vocal_pitch": 0.6009,
+        "gravity_defiance": 0.5021,
+        "spatial_phase": 0.1167,
+        "mimicry_drive": 0.1469,
+        "sentience_glimmer": 0.2546
+      }
+    },
+    {
+      "cell_index": 62,
+      "archetype": "anomalous_entity",
+      "dominant_action": "laptop",
+      "objective": 0.8181,
+      "measures": {
+        "human_engagement": 0.6094,
+        "activity_entropy": 0.1333,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9191,
+        "mean_vfe": 5.4973,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0312,
+          "laptop": 0.9375,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6038,
+        "extraversion": 0.1189,
+        "dominance": 0.6889,
+        "impulsiveness": 0.1473,
+        "agreeableness": 0.3557,
+        "curiosity": 0.3699,
+        "laziness": 0.3482,
+        "attachment": 0.7055,
+        "chaos": 0.4473,
+        "fur_density": 0.6119,
+        "body_mass": 0.3424,
+        "agility": 0.1082,
+        "metabolism": 0.8252,
+        "vocal_pitch": 0.834,
+        "gravity_defiance": 0.8768,
+        "spatial_phase": 0.6564,
+        "mimicry_drive": 0.3172,
+        "sentience_glimmer": 0.5067
+      }
+    },
+    {
+      "cell_index": 70,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7826,
+      "measures": {
+        "human_engagement": 0.7047,
+        "activity_entropy": 0.0323,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.6962,
+        "mean_vfe": 3.9784,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0125,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.9875,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5812,
+        "extraversion": 0.3975,
+        "dominance": 0.6339,
+        "impulsiveness": 0.5652,
+        "agreeableness": 0.0949,
+        "curiosity": 0.9751,
+        "laziness": 0.4366,
+        "attachment": 0.0446,
+        "chaos": 0.8007,
+        "fur_density": 0.9399,
+        "body_mass": 0.4687,
+        "agility": 0.3998,
+        "metabolism": 0.6831,
+        "vocal_pitch": 0.4764,
+        "gravity_defiance": 0.394,
+        "spatial_phase": 0.5235,
+        "mimicry_drive": 0.5455,
+        "sentience_glimmer": 0.1869
+      }
+    },
+    {
+      "cell_index": 77,
+      "archetype": "anomalous_entity",
+      "dominant_action": "rub_user",
+      "objective": 0.7894,
+      "measures": {
+        "human_engagement": 0.7294,
+        "activity_entropy": 0.5029,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9845,
+        "mean_vfe": 4.6923,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.1875,
+          "laptop": 0.4,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.4125,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.1869,
+        "extraversion": 0.3599,
+        "dominance": 0.3673,
+        "impulsiveness": 0.4929,
+        "agreeableness": 0.2456,
+        "curiosity": 0.3004,
+        "laziness": 0.415,
+        "attachment": 0.7014,
+        "chaos": 0.5607,
+        "fur_density": 0.4421,
+        "body_mass": 0.2664,
+        "agility": 0.0666,
+        "metabolism": 0.8165,
+        "vocal_pitch": 0.3678,
+        "gravity_defiance": 0.4349,
+        "spatial_phase": 0.913,
+        "mimicry_drive": 0.3802,
+        "sentience_glimmer": 0.797
+      }
+    },
+    {
+      "cell_index": 92,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7462,
+      "measures": {
+        "human_engagement": 0.905,
+        "activity_entropy": 0.1691,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9955,
+        "mean_vfe": 5.0255,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.1125,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.8875,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5495,
+        "extraversion": 0.8511,
+        "dominance": 0.6415,
+        "impulsiveness": 0.3883,
+        "agreeableness": 0.8416,
+        "curiosity": 0.5355,
+        "laziness": 0.0063,
+        "attachment": 0.5298,
+        "chaos": 0.6246,
+        "fur_density": 0.2642,
+        "body_mass": 0.608,
+        "agility": 0.2507,
+        "metabolism": 0.3967,
+        "vocal_pitch": 0.5578,
+        "gravity_defiance": 0.2011,
+        "spatial_phase": 0.7428,
+        "mimicry_drive": 0.4959,
+        "sentience_glimmer": 0.305
+      }
+    },
+    {
+      "cell_index": 74,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.7718,
+      "measures": {
+        "human_engagement": 0.7772,
+        "activity_entropy": 0.2865,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.7628,
+        "mean_vfe": 5.332,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0312,
+          "food_bowl": 0.05,
+          "cardboard_box": 0.0,
+          "stare_user": 0.8438,
+          "rub_user": 0.075,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6209,
+        "extraversion": 0.2569,
+        "dominance": 0.729,
+        "impulsiveness": 0.6526,
+        "agreeableness": 0.4409,
+        "curiosity": 0.3829,
+        "laziness": 0.3986,
+        "attachment": 0.7374,
+        "chaos": 0.4365,
+        "fur_density": 0.935,
+        "body_mass": 0.3865,
+        "agility": 0.1385,
+        "metabolism": 0.7255,
+        "vocal_pitch": 0.585,
+        "gravity_defiance": 0.9154,
+        "spatial_phase": 0.6473,
+        "mimicry_drive": 0.5205,
+        "sentience_glimmer": 0.4932
+      }
+    },
+    {
+      "cell_index": 96,
+      "archetype": "anomalous_entity",
+      "dominant_action": "rub_user",
+      "objective": 0.7281,
+      "measures": {
+        "human_engagement": 1.0,
+        "activity_entropy": 0.3939,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9926,
+        "mean_vfe": 5.7528,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0938,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.225,
+          "rub_user": 0.6813,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3723,
+        "extraversion": 0.8183,
+        "dominance": 0.5167,
+        "impulsiveness": 0.4836,
+        "agreeableness": 0.8369,
+        "curiosity": 0.662,
+        "laziness": 0.0642,
+        "attachment": 0.4351,
+        "chaos": 0.8332,
+        "fur_density": 0.195,
+        "body_mass": 0.6079,
+        "agility": 0.2353,
+        "metabolism": 0.4153,
+        "vocal_pitch": 0.4839,
+        "gravity_defiance": 0.2375,
+        "spatial_phase": 0.802,
+        "mimicry_drive": 0.4246,
+        "sentience_glimmer": 0.2175
+      }
+    },
+    {
+      "cell_index": 6,
+      "archetype": "chaotic_gremlin",
+      "dominant_action": "chaos_play",
+      "objective": 0.7615,
+      "measures": {
+        "human_engagement": 0.0678,
+        "activity_entropy": 0.3976,
+        "disruption_rate": 0.06
+      },
+      "metrics": {
+        "mean_warmth": 0.9594,
+        "mean_vfe": 6.9445,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4688,
+          "laptop": 0.0,
+          "food_bowl": 0.0375,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.4938
+        }
+      },
+      "genome": {
+        "neuroticism": 0.4702,
+        "extraversion": 0.077,
+        "dominance": 0.886,
+        "impulsiveness": 0.6188,
+        "agreeableness": 0.4852,
+        "curiosity": 0.3363,
+        "laziness": 0.4714,
+        "attachment": 0.724,
+        "chaos": 0.5424,
+        "fur_density": 0.7725,
+        "body_mass": 0.4725,
+        "agility": 0.1575,
+        "metabolism": 0.79,
+        "vocal_pitch": 0.7351,
+        "gravity_defiance": 0.7141,
+        "spatial_phase": 0.5511,
+        "mimicry_drive": 0.6153,
+        "sentience_glimmer": 0.2533
+      }
+    },
+    {
+      "cell_index": 35,
+      "archetype": "balanced_hybrid",
+      "dominant_action": "stare_user",
+      "objective": 0.8629,
+      "measures": {
+        "human_engagement": 0.3331,
+        "activity_entropy": 0.3806,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9912,
+        "mean_vfe": 4.7884,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4625,
+          "laptop": 0.0,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.5125,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.8152,
+        "extraversion": 0.5155,
+        "dominance": 0.4291,
+        "impulsiveness": 0.023,
+        "agreeableness": 0.5287,
+        "curiosity": 0.5761,
+        "laziness": 0.6152,
+        "attachment": 0.4724,
+        "chaos": 0.1261,
+        "fur_density": 0.5395,
+        "body_mass": 0.349,
+        "agility": 0.7799,
+        "metabolism": 0.9035,
+        "vocal_pitch": 0.9011,
+        "gravity_defiance": 0.3873,
+        "spatial_phase": 0.6049,
+        "mimicry_drive": 0.602,
+        "sentience_glimmer": 0.294
+      }
+    },
+    {
+      "cell_index": 47,
+      "archetype": "warmth_camper",
+      "dominant_action": "laptop",
+      "objective": 0.7757,
+      "measures": {
+        "human_engagement": 0.4984,
+        "activity_entropy": 0.5079,
+        "disruption_rate": 0.52
+      },
+      "metrics": {
+        "mean_warmth": 0.9809,
+        "mean_vfe": 5.9811,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.375,
+          "laptop": 0.4875,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.1125
+        }
+      },
+      "genome": {
+        "neuroticism": 0.7296,
+        "extraversion": 0.4844,
+        "dominance": 0.5136,
+        "impulsiveness": 0.0091,
+        "agreeableness": 0.6778,
+        "curiosity": 0.4322,
+        "laziness": 0.1688,
+        "attachment": 0.416,
+        "chaos": 0.4901,
+        "fur_density": 0.5409,
+        "body_mass": 0.4864,
+        "agility": 0.8684,
+        "metabolism": 0.9731,
+        "vocal_pitch": 0.5437,
+        "gravity_defiance": 0.0689,
+        "spatial_phase": 0.6121,
+        "mimicry_drive": 0.439,
+        "sentience_glimmer": 0.154
+      }
+    },
+    {
+      "cell_index": 83,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7448,
+      "measures": {
+        "human_engagement": 0.8097,
+        "activity_entropy": 0.223,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9947,
+        "mean_vfe": 5.2552,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.175,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.825,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5198,
+        "extraversion": 0.7195,
+        "dominance": 0.5994,
+        "impulsiveness": 0.4911,
+        "agreeableness": 0.8263,
+        "curiosity": 0.6884,
+        "laziness": 0.1271,
+        "attachment": 0.64,
+        "chaos": 0.6488,
+        "fur_density": 0.116,
+        "body_mass": 0.5335,
+        "agility": 0.3221,
+        "metabolism": 0.1461,
+        "vocal_pitch": 0.5477,
+        "gravity_defiance": 0.3009,
+        "spatial_phase": 0.5536,
+        "mimicry_drive": 0.6459,
+        "sentience_glimmer": 0.1124
+      }
+    },
+    {
+      "cell_index": 76,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7423,
+      "measures": {
+        "human_engagement": 0.7394,
+        "activity_entropy": 0.4481,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.932,
+        "mean_vfe": 5.1989,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0813,
+          "laptop": 0.0125,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.5938,
+          "rub_user": 0.3125,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6966,
+        "extraversion": 0.5626,
+        "dominance": 0.3649,
+        "impulsiveness": 0.7511,
+        "agreeableness": 0.5683,
+        "curiosity": 0.395,
+        "laziness": 0.2723,
+        "attachment": 0.76,
+        "chaos": 0.5796,
+        "fur_density": 0.5065,
+        "body_mass": 0.8879,
+        "agility": 0.7906,
+        "metabolism": 0.3945,
+        "vocal_pitch": 0.8233,
+        "gravity_defiance": 0.4429,
+        "spatial_phase": 0.6764,
+        "mimicry_drive": 0.2575,
+        "sentience_glimmer": 0.5652
+      }
+    },
+    {
+      "cell_index": 82,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7661,
+      "measures": {
+        "human_engagement": 0.8384,
+        "activity_entropy": 0.1398,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9367,
+        "mean_vfe": 7.206,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0188,
+          "food_bowl": 0.05,
+          "cardboard_box": 0.0,
+          "stare_user": 0.9313,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2868,
+        "extraversion": 0.3251,
+        "dominance": 0.3123,
+        "impulsiveness": 0.7433,
+        "agreeableness": 0.5127,
+        "curiosity": 0.3421,
+        "laziness": 0.3754,
+        "attachment": 0.2645,
+        "chaos": 0.3711,
+        "fur_density": 0.7661,
+        "body_mass": 0.3688,
+        "agility": 0.2535,
+        "metabolism": 0.621,
+        "vocal_pitch": 0.5621,
+        "gravity_defiance": 0.3742,
+        "spatial_phase": 0.7836,
+        "mimicry_drive": 0.1548,
+        "sentience_glimmer": 0.6797
+      }
+    },
+    {
+      "cell_index": 56,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7926,
+      "measures": {
+        "human_engagement": 0.5831,
+        "activity_entropy": 0.4235,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9933,
+        "mean_vfe": 5.5153,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3563,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.5875,
+          "chaos_play": 0.025
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6782,
+        "extraversion": 0.4876,
+        "dominance": 0.4979,
+        "impulsiveness": 0.2764,
+        "agreeableness": 0.6388,
+        "curiosity": 0.3201,
+        "laziness": 0.2142,
+        "attachment": 0.515,
+        "chaos": 0.422,
+        "fur_density": 0.4869,
+        "body_mass": 0.5476,
+        "agility": 0.9059,
+        "metabolism": 0.7508,
+        "vocal_pitch": 0.67,
+        "gravity_defiance": 0.2712,
+        "spatial_phase": 0.4454,
+        "mimicry_drive": 0.4914,
+        "sentience_glimmer": 0.0844
+      }
+    },
+    {
+      "cell_index": 58,
+      "archetype": "warmth_camper",
+      "dominant_action": "rub_user",
+      "objective": 0.7965,
+      "measures": {
+        "human_engagement": 0.5978,
+        "activity_entropy": 0.5627,
+        "disruption_rate": 0.03
+      },
+      "metrics": {
+        "mean_warmth": 0.9939,
+        "mean_vfe": 5.2517,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3625,
+          "laptop": 0.1875,
+          "food_bowl": 0.0375,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.4125,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.598,
+        "extraversion": 0.4785,
+        "dominance": 0.5009,
+        "impulsiveness": 0.0081,
+        "agreeableness": 0.6713,
+        "curiosity": 0.528,
+        "laziness": 0.4984,
+        "attachment": 0.5152,
+        "chaos": 0.5562,
+        "fur_density": 0.5245,
+        "body_mass": 0.6111,
+        "agility": 0.7305,
+        "metabolism": 0.8197,
+        "vocal_pitch": 0.8452,
+        "gravity_defiance": 0.4969,
+        "spatial_phase": 0.4744,
+        "mimicry_drive": 0.6099,
+        "sentience_glimmer": 0.2848
+      }
+    },
+    {
+      "cell_index": 84,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.7286,
+      "measures": {
+        "human_engagement": 0.8778,
+        "activity_entropy": 0.2997,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9435,
+        "mean_vfe": 7.3513,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0,
+          "food_bowl": 0.05,
+          "cardboard_box": 0.0,
+          "stare_user": 0.7937,
+          "rub_user": 0.1562,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3625,
+        "extraversion": 0.2318,
+        "dominance": 0.5677,
+        "impulsiveness": 0.4334,
+        "agreeableness": 0.454,
+        "curiosity": 0.14,
+        "laziness": 0.4254,
+        "attachment": 0.6184,
+        "chaos": 0.459,
+        "fur_density": 0.9597,
+        "body_mass": 0.4246,
+        "agility": 0.1576,
+        "metabolism": 0.7563,
+        "vocal_pitch": 0.5354,
+        "gravity_defiance": 0.843,
+        "spatial_phase": 0.431,
+        "mimicry_drive": 0.2984,
+        "sentience_glimmer": 0.6042
+      }
+    },
+    {
+      "cell_index": 68,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.8009,
+      "measures": {
+        "human_engagement": 0.6331,
+        "activity_entropy": 0.5388,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9944,
+        "mean_vfe": 5.4245,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3375,
+          "laptop": 0.175,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.4625,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6354,
+        "extraversion": 0.5169,
+        "dominance": 0.5341,
+        "impulsiveness": 0.1543,
+        "agreeableness": 0.6485,
+        "curiosity": 0.4037,
+        "laziness": 0.2773,
+        "attachment": 0.3879,
+        "chaos": 0.4545,
+        "fur_density": 0.587,
+        "body_mass": 0.5727,
+        "agility": 0.8188,
+        "metabolism": 0.9067,
+        "vocal_pitch": 0.4605,
+        "gravity_defiance": 0.3933,
+        "spatial_phase": 0.4198,
+        "mimicry_drive": 0.3536,
+        "sentience_glimmer": 0.1469
+      }
+    },
+    {
+      "cell_index": 73,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7465,
+      "measures": {
+        "human_engagement": 0.7569,
+        "activity_entropy": 0.2487,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9955,
+        "mean_vfe": 5.1985,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.2125,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.7875,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3651,
+        "extraversion": 0.6463,
+        "dominance": 0.3574,
+        "impulsiveness": 0.4326,
+        "agreeableness": 0.79,
+        "curiosity": 0.2534,
+        "laziness": 0.1057,
+        "attachment": 0.6727,
+        "chaos": 0.82,
+        "fur_density": 0.4549,
+        "body_mass": 0.7543,
+        "agility": 0.512,
+        "metabolism": 0.2126,
+        "vocal_pitch": 0.6812,
+        "gravity_defiance": 0.2406,
+        "spatial_phase": 0.3711,
+        "mimicry_drive": 0.3451,
+        "sentience_glimmer": 0.679
+      }
+    },
+    {
+      "cell_index": 81,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7636,
+      "measures": {
+        "human_engagement": 0.8197,
+        "activity_entropy": 0.1227,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.7292,
+        "mean_vfe": 4.8399,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.9438,
+          "rub_user": 0.0312,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5619,
+        "extraversion": 0.3904,
+        "dominance": 0.7841,
+        "impulsiveness": 0.496,
+        "agreeableness": 0.5328,
+        "curiosity": 0.3188,
+        "laziness": 0.5843,
+        "attachment": 0.7897,
+        "chaos": 0.175,
+        "fur_density": 0.8171,
+        "body_mass": 0.2363,
+        "agility": 0.0878,
+        "metabolism": 0.9066,
+        "vocal_pitch": 0.7921,
+        "gravity_defiance": 0.5417,
+        "spatial_phase": 0.6092,
+        "mimicry_drive": 0.4915,
+        "sentience_glimmer": 0.7885
+      }
+    },
+    {
+      "cell_index": 4,
+      "archetype": "anomalous_entity",
+      "dominant_action": "radiator",
+      "objective": 0.8797,
+      "measures": {
+        "human_engagement": 0.0975,
+        "activity_entropy": 0.2677,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9942,
+        "mean_vfe": 4.2358,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.8188,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.15,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2466,
+        "extraversion": 0.4356,
+        "dominance": 0.8625,
+        "impulsiveness": 0.2242,
+        "agreeableness": 0.6171,
+        "curiosity": 0.0384,
+        "laziness": 0.6352,
+        "attachment": 0.6568,
+        "chaos": 0.5599,
+        "fur_density": 0.6757,
+        "body_mass": 0.4193,
+        "agility": 0.1914,
+        "metabolism": 0.7363,
+        "vocal_pitch": 0.9514,
+        "gravity_defiance": 0.8575,
+        "spatial_phase": 0.8048,
+        "mimicry_drive": 0.5343,
+        "sentience_glimmer": 0.3116
+      }
+    },
+    {
+      "cell_index": 24,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.8654,
+      "measures": {
+        "human_engagement": 0.2019,
+        "activity_entropy": 0.3231,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9959,
+        "mean_vfe": 4.9724,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.725,
+          "laptop": 0.0,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.25,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.722,
+        "extraversion": 0.3674,
+        "dominance": 0.5554,
+        "impulsiveness": 0.1296,
+        "agreeableness": 0.6039,
+        "curiosity": 0.3584,
+        "laziness": 0.332,
+        "attachment": 0.6472,
+        "chaos": 0.3631,
+        "fur_density": 0.5115,
+        "body_mass": 0.6087,
+        "agility": 0.8624,
+        "metabolism": 0.7489,
+        "vocal_pitch": 0.4778,
+        "gravity_defiance": 0.2094,
+        "spatial_phase": 0.3471,
+        "mimicry_drive": 0.4373,
+        "sentience_glimmer": 0.2233
+      }
+    },
+    {
+      "cell_index": 75,
+      "archetype": "chaotic_gremlin",
+      "dominant_action": "laptop",
+      "objective": 0.7675,
+      "measures": {
+        "human_engagement": 0.7,
+        "activity_entropy": 0.3481,
+        "disruption_rate": 1.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9951,
+        "mean_vfe": 5.793,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.2625,
+          "laptop": 0.7,
+          "food_bowl": 0.0375,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.7127,
+        "extraversion": 0.5094,
+        "dominance": 0.4051,
+        "impulsiveness": 0.095,
+        "agreeableness": 0.6495,
+        "curiosity": 0.448,
+        "laziness": 0.1316,
+        "attachment": 0.4728,
+        "chaos": 0.5567,
+        "fur_density": 0.33,
+        "body_mass": 0.5689,
+        "agility": 0.9596,
+        "metabolism": 0.7897,
+        "vocal_pitch": 0.2861,
+        "gravity_defiance": 0.4271,
+        "spatial_phase": 0.5838,
+        "mimicry_drive": 0.5046,
+        "sentience_glimmer": 0.3311
+      }
+    },
+    {
+      "cell_index": 85,
+      "archetype": "anomalous_entity",
+      "dominant_action": "stare_user",
+      "objective": 0.7531,
+      "measures": {
+        "human_engagement": 0.8741,
+        "activity_entropy": 0.3458,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.8951,
+        "mean_vfe": 5.0965,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0312,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.7688,
+          "rub_user": 0.1688,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.617,
+        "extraversion": 0.2387,
+        "dominance": 0.8952,
+        "impulsiveness": 0.5551,
+        "agreeableness": 0.4977,
+        "curiosity": 0.2851,
+        "laziness": 0.5237,
+        "attachment": 0.8391,
+        "chaos": 0.5874,
+        "fur_density": 0.8256,
+        "body_mass": 0.2693,
+        "agility": 0.1141,
+        "metabolism": 0.8423,
+        "vocal_pitch": 0.6315,
+        "gravity_defiance": 0.8738,
+        "spatial_phase": 0.7445,
+        "mimicry_drive": 0.5836,
+        "sentience_glimmer": 0.3614
+      }
+    },
+    {
+      "cell_index": 86,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7391,
+      "measures": {
+        "human_engagement": 0.8675,
+        "activity_entropy": 0.4326,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9891,
+        "mean_vfe": 5.4031,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.1063,
+          "laptop": 0.0437,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.1437,
+          "rub_user": 0.7063,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.4689,
+        "extraversion": 0.8727,
+        "dominance": 0.4876,
+        "impulsiveness": 0.4117,
+        "agreeableness": 0.8173,
+        "curiosity": 0.485,
+        "laziness": 0.0112,
+        "attachment": 0.4397,
+        "chaos": 0.777,
+        "fur_density": 0.3344,
+        "body_mass": 0.4488,
+        "agility": 0.1056,
+        "metabolism": 0.1938,
+        "vocal_pitch": 0.4599,
+        "gravity_defiance": 0.2974,
+        "spatial_phase": 0.508,
+        "mimicry_drive": 0.4575,
+        "sentience_glimmer": 0.4436
+      }
+    },
+    {
+      "cell_index": 91,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7548,
+      "measures": {
+        "human_engagement": 0.9594,
+        "activity_entropy": 0.1124,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9959,
+        "mean_vfe": 4.5989,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0625,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.9375,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.145,
+        "extraversion": 0.6583,
+        "dominance": 0.295,
+        "impulsiveness": 0.6042,
+        "agreeableness": 0.2062,
+        "curiosity": 0.2162,
+        "laziness": 0.1039,
+        "attachment": 0.919,
+        "chaos": 0.5274,
+        "fur_density": 0.2931,
+        "body_mass": 0.6919,
+        "agility": 0.1763,
+        "metabolism": 0.6539,
+        "vocal_pitch": 0.5393,
+        "gravity_defiance": 0.6903,
+        "spatial_phase": 0.3155,
+        "mimicry_drive": 0.1969,
+        "sentience_glimmer": 0.4189
+      }
+    },
+    {
+      "cell_index": 17,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.7494,
+      "measures": {
+        "human_engagement": 0.135,
+        "activity_entropy": 0.5109,
+        "disruption_rate": 0.145
+      },
+      "metrics": {
+        "mean_warmth": 0.9671,
+        "mean_vfe": 6.5243,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.45,
+          "laptop": 0.1,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.4188
+        }
+      },
+      "genome": {
+        "neuroticism": 0.7639,
+        "extraversion": 0.4404,
+        "dominance": 0.4324,
+        "impulsiveness": 0.0299,
+        "agreeableness": 0.7001,
+        "curiosity": 0.4311,
+        "laziness": 0.0928,
+        "attachment": 0.4958,
+        "chaos": 0.5076,
+        "fur_density": 0.5355,
+        "body_mass": 0.6226,
+        "agility": 0.9166,
+        "metabolism": 0.7053,
+        "vocal_pitch": 0.5805,
+        "gravity_defiance": 0.2449,
+        "spatial_phase": 0.4543,
+        "mimicry_drive": 0.5676,
+        "sentience_glimmer": 0.1639
+      }
+    },
+    {
+      "cell_index": 57,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7975,
+      "measures": {
+        "human_engagement": 0.595,
+        "activity_entropy": 0.4627,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9942,
+        "mean_vfe": 5.424,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3625,
+          "laptop": 0.0625,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.55,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6541,
+        "extraversion": 0.5596,
+        "dominance": 0.281,
+        "impulsiveness": 0.2014,
+        "agreeableness": 0.6206,
+        "curiosity": 0.4333,
+        "laziness": 0.3052,
+        "attachment": 0.4398,
+        "chaos": 0.4414,
+        "fur_density": 0.4712,
+        "body_mass": 0.5195,
+        "agility": 0.8569,
+        "metabolism": 0.877,
+        "vocal_pitch": 0.6484,
+        "gravity_defiance": 0.4808,
+        "spatial_phase": 0.4006,
+        "mimicry_drive": 0.4881,
+        "sentience_glimmer": 0.1322
+      }
+    },
+    {
+      "cell_index": 44,
+      "archetype": "warmth_camper",
+      "dominant_action": "laptop",
+      "objective": 0.8464,
+      "measures": {
+        "human_engagement": 0.4956,
+        "activity_entropy": 0.2636,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.996,
+        "mean_vfe": 5.346,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.2375,
+          "laptop": 0.7625,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.4837,
+        "extraversion": 0.4361,
+        "dominance": 0.5731,
+        "impulsiveness": 0.222,
+        "agreeableness": 0.381,
+        "curiosity": 0.5081,
+        "laziness": 0.4907,
+        "attachment": 0.3569,
+        "chaos": 0.3653,
+        "fur_density": 0.4168,
+        "body_mass": 0.7165,
+        "agility": 0.2229,
+        "metabolism": 0.46,
+        "vocal_pitch": 0.7327,
+        "gravity_defiance": 0.3985,
+        "spatial_phase": 0.7873,
+        "mimicry_drive": 0.6495,
+        "sentience_glimmer": 0.5164
+      }
+    },
+    {
+      "cell_index": 46,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.7849,
+      "measures": {
+        "human_engagement": 0.4003,
+        "activity_entropy": 0.3958,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9922,
+        "mean_vfe": 5.8841,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4375,
+          "laptop": 0.0,
+          "food_bowl": 0.0375,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.525,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.4393,
+        "extraversion": 0.4316,
+        "dominance": 0.7041,
+        "impulsiveness": 0.5081,
+        "agreeableness": 0.3587,
+        "curiosity": 0.0809,
+        "laziness": 0.2957,
+        "attachment": 0.6731,
+        "chaos": 0.1254,
+        "fur_density": 0.5903,
+        "body_mass": 0.3314,
+        "agility": 0.0469,
+        "metabolism": 0.4809,
+        "vocal_pitch": 0.6735,
+        "gravity_defiance": 0.6215,
+        "spatial_phase": 0.6878,
+        "mimicry_drive": 0.2331,
+        "sentience_glimmer": 0.5803
+      }
+    },
+    {
+      "cell_index": 48,
+      "archetype": "velcro_companion",
+      "dominant_action": "rub_user",
+      "objective": 0.763,
+      "measures": {
+        "human_engagement": 0.4272,
+        "activity_entropy": 0.531,
+        "disruption_rate": 0.0512
+      },
+      "metrics": {
+        "mean_warmth": 0.9664,
+        "mean_vfe": 5.5472,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3625,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.4688,
+          "chaos_play": 0.1375
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6476,
+        "extraversion": 0.7185,
+        "dominance": 0.3624,
+        "impulsiveness": 0.814,
+        "agreeableness": 0.4997,
+        "curiosity": 0.1477,
+        "laziness": 0.3337,
+        "attachment": 0.741,
+        "chaos": 0.7754,
+        "fur_density": 0.4287,
+        "body_mass": 0.4619,
+        "agility": 0.3292,
+        "metabolism": 0.8187,
+        "vocal_pitch": 0.3817,
+        "gravity_defiance": 0.5646,
+        "spatial_phase": 0.4228,
+        "mimicry_drive": 0.571,
+        "sentience_glimmer": 0.1487
+      }
+    },
+    {
+      "cell_index": 78,
+      "archetype": "anomalous_entity",
+      "dominant_action": "laptop",
+      "objective": 0.7984,
+      "measures": {
+        "human_engagement": 0.7003,
+        "activity_entropy": 0.5556,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9825,
+        "mean_vfe": 4.8912,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.1875,
+          "laptop": 0.4125,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.3688,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.1888,
+        "extraversion": 0.1885,
+        "dominance": 0.8906,
+        "impulsiveness": 0.6482,
+        "agreeableness": 0.2975,
+        "curiosity": 0.3438,
+        "laziness": 0.5612,
+        "attachment": 0.6961,
+        "chaos": 0.6924,
+        "fur_density": 0.5928,
+        "body_mass": 0.6025,
+        "agility": 0.1271,
+        "metabolism": 0.7748,
+        "vocal_pitch": 0.8412,
+        "gravity_defiance": 0.8664,
+        "spatial_phase": 0.6304,
+        "mimicry_drive": 0.4222,
+        "sentience_glimmer": 0.4271
+      }
+    },
+    {
+      "cell_index": 15,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.8717,
+      "measures": {
+        "human_engagement": 0.1872,
+        "activity_entropy": 0.3266,
+        "disruption_rate": 0.06
+      },
+      "metrics": {
+        "mean_warmth": 0.9931,
+        "mean_vfe": 4.7846,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.7563,
+          "laptop": 0.1938,
+          "food_bowl": 0.05,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3475,
+        "extraversion": 0.3826,
+        "dominance": 0.0151,
+        "impulsiveness": 0.1752,
+        "agreeableness": 0.1554,
+        "curiosity": 0.4421,
+        "laziness": 0.4451,
+        "attachment": 0.459,
+        "chaos": 0.4965,
+        "fur_density": 0.6149,
+        "body_mass": 0.8799,
+        "agility": 0.3838,
+        "metabolism": 0.8185,
+        "vocal_pitch": 0.2551,
+        "gravity_defiance": 0.7477,
+        "spatial_phase": 0.3739,
+        "mimicry_drive": 0.1324,
+        "sentience_glimmer": 0.1123
+      }
+    },
+    {
+      "cell_index": 27,
+      "archetype": "restless_explorer",
+      "dominant_action": "chaos_play",
+      "objective": 0.7116,
+      "measures": {
+        "human_engagement": 0.22,
+        "activity_entropy": 0.5052,
+        "disruption_rate": 0.1
+      },
+      "metrics": {
+        "mean_warmth": 0.9404,
+        "mean_vfe": 5.9509,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.1938,
+          "chaos_play": 0.4062
+        }
+      },
+      "genome": {
+        "neuroticism": 0.362,
+        "extraversion": 0.9412,
+        "dominance": 0.3983,
+        "impulsiveness": 0.9109,
+        "agreeableness": 0.4029,
+        "curiosity": 0.1697,
+        "laziness": 0.153,
+        "attachment": 0.6156,
+        "chaos": 0.9128,
+        "fur_density": 0.357,
+        "body_mass": 0.6739,
+        "agility": 0.4252,
+        "metabolism": 0.7766,
+        "vocal_pitch": 0.6527,
+        "gravity_defiance": 0.6569,
+        "spatial_phase": 0.4111,
+        "mimicry_drive": 0.7291,
+        "sentience_glimmer": 0.1782
+      }
+    },
+    {
+      "cell_index": 25,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.8765,
+      "measures": {
+        "human_engagement": 0.26,
+        "activity_entropy": 0.3827,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9702,
+        "mean_vfe": 4.4814,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.5688,
+          "laptop": 0.4,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5373,
+        "extraversion": 0.4093,
+        "dominance": 0.0446,
+        "impulsiveness": 0.1112,
+        "agreeableness": 0.1639,
+        "curiosity": 0.3567,
+        "laziness": 0.3477,
+        "attachment": 0.5058,
+        "chaos": 0.478,
+        "fur_density": 0.6016,
+        "body_mass": 0.7145,
+        "agility": 0.1877,
+        "metabolism": 0.9668,
+        "vocal_pitch": 0.4801,
+        "gravity_defiance": 0.5021,
+        "spatial_phase": 0.1163,
+        "mimicry_drive": 0.2554,
+        "sentience_glimmer": 0.1298
+      }
+    },
+    {
+      "cell_index": 28,
+      "archetype": "restless_explorer",
+      "dominant_action": "radiator",
+      "objective": 0.7794,
+      "measures": {
+        "human_engagement": 0.275,
+        "activity_entropy": 0.5669,
+        "disruption_rate": 0.0475
+      },
+      "metrics": {
+        "mean_warmth": 0.9862,
+        "mean_vfe": 6.5139,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4062,
+          "laptop": 0.0,
+          "food_bowl": 0.0312,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.2313,
+          "chaos_play": 0.3313
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5124,
+        "extraversion": 0.0708,
+        "dominance": 0.9255,
+        "impulsiveness": 0.3809,
+        "agreeableness": 0.5882,
+        "curiosity": 0.0757,
+        "laziness": 0.251,
+        "attachment": 0.7581,
+        "chaos": 0.2358,
+        "fur_density": 0.734,
+        "body_mass": 0.2746,
+        "agility": 0.3701,
+        "metabolism": 0.7725,
+        "vocal_pitch": 0.7586,
+        "gravity_defiance": 0.6761,
+        "spatial_phase": 0.6729,
+        "mimicry_drive": 0.4273,
+        "sentience_glimmer": 0.6027
+      }
+    },
+    {
+      "cell_index": 37,
+      "archetype": "balanced_hybrid",
+      "dominant_action": "rub_user",
+      "objective": 0.7584,
+      "measures": {
+        "human_engagement": 0.3959,
+        "activity_entropy": 0.48,
+        "disruption_rate": 0.055
+      },
+      "metrics": {
+        "mean_warmth": 0.9691,
+        "mean_vfe": 5.7175,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.425,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.4375,
+          "chaos_play": 0.1375
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5559,
+        "extraversion": 0.5779,
+        "dominance": 0.3375,
+        "impulsiveness": 0.4159,
+        "agreeableness": 0.8821,
+        "curiosity": 0.1918,
+        "laziness": 0.2113,
+        "attachment": 0.4951,
+        "chaos": 0.7933,
+        "fur_density": 0.4896,
+        "body_mass": 0.6289,
+        "agility": 0.5223,
+        "metabolism": 0.2787,
+        "vocal_pitch": 0.6278,
+        "gravity_defiance": 0.2398,
+        "spatial_phase": 0.6902,
+        "mimicry_drive": 0.5491,
+        "sentience_glimmer": 0.6702
+      }
+    },
+    {
+      "cell_index": 87,
+      "archetype": "anomalous_entity",
+      "dominant_action": "rub_user",
+      "objective": 0.7035,
+      "measures": {
+        "human_engagement": 0.8734,
+        "activity_entropy": 0.4641,
+        "disruption_rate": 0.0625
+      },
+      "metrics": {
+        "mean_warmth": 0.9617,
+        "mean_vfe": 6.4056,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.3125,
+          "rub_user": 0.55,
+          "chaos_play": 0.1375
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6064,
+        "extraversion": 0.545,
+        "dominance": 0.4312,
+        "impulsiveness": 0.2318,
+        "agreeableness": 0.8271,
+        "curiosity": 0.3254,
+        "laziness": 0.0279,
+        "attachment": 0.7926,
+        "chaos": 0.8476,
+        "fur_density": 0.6922,
+        "body_mass": 0.7369,
+        "agility": 0.4828,
+        "metabolism": 0.1217,
+        "vocal_pitch": 0.5335,
+        "gravity_defiance": 0.3441,
+        "spatial_phase": 0.9059,
+        "mimicry_drive": 0.2295,
+        "sentience_glimmer": 0.3886
+      }
+    },
+    {
+      "cell_index": 59,
+      "archetype": "restless_explorer",
+      "dominant_action": "rub_user",
+      "objective": 0.7807,
+      "measures": {
+        "human_engagement": 0.5334,
+        "activity_entropy": 0.6254,
+        "disruption_rate": 0.0663
+      },
+      "metrics": {
+        "mean_warmth": 0.9806,
+        "mean_vfe": 5.45,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3688,
+          "laptop": 0.1437,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.3875,
+          "chaos_play": 0.075
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6762,
+        "extraversion": 0.6122,
+        "dominance": 0.4467,
+        "impulsiveness": 0.1596,
+        "agreeableness": 0.6449,
+        "curiosity": 0.3628,
+        "laziness": 0.1351,
+        "attachment": 0.4196,
+        "chaos": 0.4522,
+        "fur_density": 0.456,
+        "body_mass": 0.5711,
+        "agility": 0.8708,
+        "metabolism": 0.9475,
+        "vocal_pitch": 0.2542,
+        "gravity_defiance": 0.2281,
+        "spatial_phase": 0.626,
+        "mimicry_drive": 0.4465,
+        "sentience_glimmer": 0.233
+      }
+    },
+    {
+      "cell_index": 36,
+      "archetype": "anomalous_entity",
+      "dominant_action": "radiator",
+      "objective": 0.8392,
+      "measures": {
+        "human_engagement": 0.3313,
+        "activity_entropy": 0.3938,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9952,
+        "mean_vfe": 5.563,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.5437,
+          "laptop": 0.0,
+          "food_bowl": 0.0375,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.4188,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2813,
+        "extraversion": 0.1867,
+        "dominance": 0.7506,
+        "impulsiveness": 0.4148,
+        "agreeableness": 0.7178,
+        "curiosity": 0.1268,
+        "laziness": 0.4145,
+        "attachment": 0.6065,
+        "chaos": 0.4444,
+        "fur_density": 0.7247,
+        "body_mass": 0.2345,
+        "agility": 0.1085,
+        "metabolism": 0.8085,
+        "vocal_pitch": 0.4851,
+        "gravity_defiance": 0.4167,
+        "spatial_phase": 0.8758,
+        "mimicry_drive": 0.2115,
+        "sentience_glimmer": 0.4835
+      }
+    },
+    {
+      "cell_index": 97,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7217,
+      "measures": {
+        "human_engagement": 1.0,
+        "activity_entropy": 0.4575,
+        "disruption_rate": 0.465
+      },
+      "metrics": {
+        "mean_warmth": 0.9972,
+        "mean_vfe": 7.038,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.2562,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.5875,
+          "rub_user": 0.1562,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6194,
+        "extraversion": 0.5199,
+        "dominance": 0.492,
+        "impulsiveness": 0.1267,
+        "agreeableness": 0.6777,
+        "curiosity": 0.6812,
+        "laziness": 0.1082,
+        "attachment": 0.4667,
+        "chaos": 0.4377,
+        "fur_density": 0.4965,
+        "body_mass": 0.6828,
+        "agility": 0.755,
+        "metabolism": 0.7825,
+        "vocal_pitch": 0.3554,
+        "gravity_defiance": 0.1704,
+        "spatial_phase": 0.5372,
+        "mimicry_drive": 0.3986,
+        "sentience_glimmer": 0.3251
+      }
+    },
+    {
+      "cell_index": 7,
+      "archetype": "anomalous_entity",
+      "dominant_action": "chaos_play",
+      "objective": 0.7549,
+      "measures": {
+        "human_engagement": 0.0731,
+        "activity_entropy": 0.459,
+        "disruption_rate": 0.0525
+      },
+      "metrics": {
+        "mean_warmth": 0.9604,
+        "mean_vfe": 6.9527,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4437,
+          "laptop": 0.0,
+          "food_bowl": 0.05,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.025,
+          "chaos_play": 0.4813
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5283,
+        "extraversion": 0.1941,
+        "dominance": 0.5818,
+        "impulsiveness": 0.5516,
+        "agreeableness": 0.5014,
+        "curiosity": 0.2072,
+        "laziness": 0.4396,
+        "attachment": 0.7699,
+        "chaos": 0.6452,
+        "fur_density": 0.9042,
+        "body_mass": 0.3208,
+        "agility": 0.0065,
+        "metabolism": 0.9218,
+        "vocal_pitch": 0.5144,
+        "gravity_defiance": 0.8202,
+        "spatial_phase": 0.6421,
+        "mimicry_drive": 0.5936,
+        "sentience_glimmer": 0.3388
+      }
+    },
+    {
+      "cell_index": 16,
+      "archetype": "chaotic_gremlin",
+      "dominant_action": "chaos_play",
+      "objective": 0.7119,
+      "measures": {
+        "human_engagement": 0.1019,
+        "activity_entropy": 0.4408,
+        "disruption_rate": 0.1038
+      },
+      "metrics": {
+        "mean_warmth": 0.9498,
+        "mean_vfe": 6.2217,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4563,
+          "laptop": 0.0,
+          "food_bowl": 0.0063,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0625,
+          "chaos_play": 0.475
+        }
+      },
+      "genome": {
+        "neuroticism": 0.379,
+        "extraversion": 0.7449,
+        "dominance": 0.4472,
+        "impulsiveness": 0.1807,
+        "agreeableness": 0.4071,
+        "curiosity": 0.3094,
+        "laziness": 0.0039,
+        "attachment": 0.4739,
+        "chaos": 0.7787,
+        "fur_density": 0.3892,
+        "body_mass": 0.9044,
+        "agility": 0.5442,
+        "metabolism": 0.6227,
+        "vocal_pitch": 0.275,
+        "gravity_defiance": 0.453,
+        "spatial_phase": 0.2751,
+        "mimicry_drive": 0.0417,
+        "sentience_glimmer": 0.3124
+      }
+    },
+    {
+      "cell_index": 52,
+      "archetype": "staring_observer",
+      "dominant_action": "stare_user",
+      "objective": 0.7452,
+      "measures": {
+        "human_engagement": 0.5981,
+        "activity_entropy": 0.1563,
+        "disruption_rate": 0.0587
+      },
+      "metrics": {
+        "mean_warmth": 0.7014,
+        "mean_vfe": 3.4176,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.0,
+          "laptop": 0.0,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.9,
+          "rub_user": 0.0,
+          "chaos_play": 0.1
+        }
+      },
+      "genome": {
+        "neuroticism": 0.2381,
+        "extraversion": 0.3639,
+        "dominance": 0.3397,
+        "impulsiveness": 0.7219,
+        "agreeableness": 0.1576,
+        "curiosity": 0.7739,
+        "laziness": 0.2281,
+        "attachment": 0.3933,
+        "chaos": 0.7366,
+        "fur_density": 0.9923,
+        "body_mass": 0.6368,
+        "agility": 0.4043,
+        "metabolism": 0.7966,
+        "vocal_pitch": 0.8186,
+        "gravity_defiance": 0.5924,
+        "spatial_phase": 0.2859,
+        "mimicry_drive": 0.3182,
+        "sentience_glimmer": 0.4045
+      }
+    },
+    {
+      "cell_index": 49,
+      "archetype": "restless_explorer",
+      "dominant_action": "radiator",
+      "objective": 0.7596,
+      "measures": {
+        "human_engagement": 0.4306,
+        "activity_entropy": 0.6234,
+        "disruption_rate": 0.0663
+      },
+      "metrics": {
+        "mean_warmth": 0.9746,
+        "mean_vfe": 5.9701,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3812,
+          "laptop": 0.0688,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.375,
+          "chaos_play": 0.15
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6731,
+        "extraversion": 0.3271,
+        "dominance": 0.7747,
+        "impulsiveness": 0.2896,
+        "agreeableness": 0.571,
+        "curiosity": 0.4783,
+        "laziness": 0.116,
+        "attachment": 0.5842,
+        "chaos": 0.3101,
+        "fur_density": 0.6588,
+        "body_mass": 0.6674,
+        "agility": 0.6709,
+        "metabolism": 0.9829,
+        "vocal_pitch": 0.5217,
+        "gravity_defiance": 0.476,
+        "spatial_phase": 0.5425,
+        "mimicry_drive": 0.3329,
+        "sentience_glimmer": 0.0315
+      }
+    },
+    {
+      "cell_index": 69,
+      "archetype": "restless_explorer",
+      "dominant_action": "rub_user",
+      "objective": 0.7392,
+      "measures": {
+        "human_engagement": 0.6309,
+        "activity_entropy": 0.6121,
+        "disruption_rate": 0.1713
+      },
+      "metrics": {
+        "mean_warmth": 0.9753,
+        "mean_vfe": 5.2503,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.275,
+          "laptop": 0.2313,
+          "food_bowl": 0.0,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.4062,
+          "chaos_play": 0.0875
+        }
+      },
+      "genome": {
+        "neuroticism": 0.398,
+        "extraversion": 0.7973,
+        "dominance": 0.5337,
+        "impulsiveness": 0.5359,
+        "agreeableness": 0.8151,
+        "curiosity": 0.5217,
+        "laziness": 0.0311,
+        "attachment": 0.3863,
+        "chaos": 0.7727,
+        "fur_density": 0.229,
+        "body_mass": 0.5876,
+        "agility": 0.3763,
+        "metabolism": 0.2989,
+        "vocal_pitch": 0.2822,
+        "gravity_defiance": 0.3056,
+        "spatial_phase": 0.6476,
+        "mimicry_drive": 0.559,
+        "sentience_glimmer": 0.1969
+      }
+    },
+    {
+      "cell_index": 18,
+      "archetype": "anomalous_entity",
+      "dominant_action": "chaos_play",
+      "objective": 0.7467,
+      "measures": {
+        "human_engagement": 0.1631,
+        "activity_entropy": 0.5476,
+        "disruption_rate": 0.06
+      },
+      "metrics": {
+        "mean_warmth": 0.9577,
+        "mean_vfe": 6.7492,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3875,
+          "laptop": 0.0,
+          "food_bowl": 0.0375,
+          "cardboard_box": 0.0,
+          "stare_user": 0.15,
+          "rub_user": 0.0,
+          "chaos_play": 0.425
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3377,
+        "extraversion": 0.1718,
+        "dominance": 0.8426,
+        "impulsiveness": 0.5661,
+        "agreeableness": 0.5026,
+        "curiosity": 0.3226,
+        "laziness": 0.3627,
+        "attachment": 0.5382,
+        "chaos": 0.5217,
+        "fur_density": 0.8425,
+        "body_mass": 0.5021,
+        "agility": 0.2158,
+        "metabolism": 0.7438,
+        "vocal_pitch": 0.6442,
+        "gravity_defiance": 0.8653,
+        "spatial_phase": 0.6703,
+        "mimicry_drive": 0.4529,
+        "sentience_glimmer": 0.2733
+      }
+    },
+    {
+      "cell_index": 38,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.7513,
+      "measures": {
+        "human_engagement": 0.3103,
+        "activity_entropy": 0.5638,
+        "disruption_rate": 0.2875
+      },
+      "metrics": {
+        "mean_warmth": 0.9699,
+        "mean_vfe": 6.3612,
+        "water_glass_intact": false,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.4062,
+          "laptop": 0.2688,
+          "food_bowl": 0.025,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.0,
+          "chaos_play": 0.3
+        }
+      },
+      "genome": {
+        "neuroticism": 0.6001,
+        "extraversion": 0.4345,
+        "dominance": 0.4921,
+        "impulsiveness": 0.0698,
+        "agreeableness": 0.5495,
+        "curiosity": 0.4718,
+        "laziness": 0.1246,
+        "attachment": 0.3465,
+        "chaos": 0.5103,
+        "fur_density": 0.5701,
+        "body_mass": 0.5563,
+        "agility": 0.8136,
+        "metabolism": 0.8042,
+        "vocal_pitch": 0.4464,
+        "gravity_defiance": 0.2906,
+        "spatial_phase": 0.4703,
+        "mimicry_drive": 0.5545,
+        "sentience_glimmer": 0.2138
+      }
+    },
+    {
+      "cell_index": 39,
+      "archetype": "restless_explorer",
+      "dominant_action": "radiator",
+      "objective": 0.772,
+      "measures": {
+        "human_engagement": 0.3703,
+        "activity_entropy": 0.5857,
+        "disruption_rate": 0.0113
+      },
+      "metrics": {
+        "mean_warmth": 0.9775,
+        "mean_vfe": 6.3855,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.3688,
+          "laptop": 0.0,
+          "food_bowl": 0.0437,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.3375,
+          "chaos_play": 0.25
+        }
+      },
+      "genome": {
+        "neuroticism": 0.3921,
+        "extraversion": 0.2664,
+        "dominance": 0.8371,
+        "impulsiveness": 0.5396,
+        "agreeableness": 0.4245,
+        "curiosity": 0.0599,
+        "laziness": 0.3326,
+        "attachment": 0.7215,
+        "chaos": 0.4233,
+        "fur_density": 0.6916,
+        "body_mass": 0.5243,
+        "agility": 0.0705,
+        "metabolism": 0.7161,
+        "vocal_pitch": 0.6763,
+        "gravity_defiance": 0.6686,
+        "spatial_phase": 0.41,
+        "mimicry_drive": 0.3338,
+        "sentience_glimmer": 0.5103
+      }
+    },
+    {
+      "cell_index": 26,
+      "archetype": "warmth_camper",
+      "dominant_action": "radiator",
+      "objective": 0.8576,
+      "measures": {
+        "human_engagement": 0.2094,
+        "activity_entropy": 0.4106,
+        "disruption_rate": 0.0
+      },
+      "metrics": {
+        "mean_warmth": 0.9914,
+        "mean_vfe": 5.2987,
+        "water_glass_intact": true,
+        "action_ratios": {
+          "idle": 0.0,
+          "radiator": 0.675,
+          "laptop": 0.025,
+          "food_bowl": 0.05,
+          "cardboard_box": 0.0,
+          "stare_user": 0.0,
+          "rub_user": 0.25,
+          "chaos_play": 0.0
+        }
+      },
+      "genome": {
+        "neuroticism": 0.5531,
+        "extraversion": 0.1183,
+        "dominance": 0.7603,
+        "impulsiveness": 0.5505,
+        "agreeableness": 0.491,
+        "curiosity": 0.3095,
+        "laziness": 0.499,
+        "attachment": 0.8006,
+        "chaos": 0.6214,
+        "fur_density": 0.7479,
+        "body_mass": 0.5906,
+        "agility": 0.1392,
+        "metabolism": 0.7587,
+        "vocal_pitch": 0.7025,
+        "gravity_defiance": 0.792,
+        "spatial_phase": 0.5906,
+        "mimicry_drive": 0.6116,
+        "sentience_glimmer": 0.4774
+      }
+    }
+  ]
+}

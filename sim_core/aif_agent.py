@@ -111,7 +111,7 @@ class ActiveInferencePet:
         action_str = last_record.action if last_record is not None else "idle"
         if "knock_over" in action_str or "scratch" in action_str:
             o_effort = 2
-        elif action_str.startswith("approach:") or "rub" in action_str or "keyboard" in action_str:
+        elif "approach:" in action_str or "rub" in action_str or "keyboard" in action_str:
             o_effort = 1
         else:
             o_effort = 0

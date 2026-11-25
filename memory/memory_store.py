@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import math
 import sqlite3
+import threading
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol, Self
@@ -82,7 +83,9 @@ class EpisodicMemoryStore:
     ) -> None:
         self.db_path = str(db_path)
         self.embedder: TextEmbedder = embedder or HashEmbedder(dim=384)
-        self.conn = sqlite3.connect(self.db_path)
+        self._lock = threading.RLock()
+        self._closed = False
+        self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
         self.conn.enable_load_extension(True)
         sqlite_vec.load(self.conn)
@@ -90,33 +93,35 @@ class EpisodicMemoryStore:
         self._init_schema()
 
     def _init_schema(self) -> None:
-        self.conn.executescript(
-            f"""
-            CREATE TABLE IF NOT EXISTS episodes (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                tick INTEGER NOT NULL,
-                entity TEXT NOT NULL,
-                action TEXT NOT NULL,
-                event_tag TEXT NOT NULL,
-                summary TEXT NOT NULL,
-                delta_p REAL NOT NULL,
-                delta_a REAL NOT NULL,
-                delta_d REAL NOT NULL,
-                importance REAL NOT NULL,
-                x REAL NOT NULL,
-                y REAL NOT NULL
-            );
-            CREATE INDEX IF NOT EXISTS idx_episodes_entity ON episodes(entity);
-            CREATE VIRTUAL TABLE IF NOT EXISTS memory_vec USING vec0(
-                embedding float[{self.embedder.dim}] distance_metric=cosine
-            );
-            """
-        )
-        self.conn.commit()
+        with self._lock:
+            self.conn.executescript(
+                f"""
+                CREATE TABLE IF NOT EXISTS episodes (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    tick INTEGER NOT NULL,
+                    entity TEXT NOT NULL,
+                    action TEXT NOT NULL,
+                    event_tag TEXT NOT NULL,
+                    summary TEXT NOT NULL,
+                    delta_p REAL NOT NULL,
+                    delta_a REAL NOT NULL,
+                    delta_d REAL NOT NULL,
+                    importance REAL NOT NULL,
+                    x REAL NOT NULL,
+                    y REAL NOT NULL
+                );
+                CREATE INDEX IF NOT EXISTS idx_episodes_entity ON episodes(entity);
+                CREATE VIRTUAL TABLE IF NOT EXISTS memory_vec USING vec0(
+                    embedding float[{self.embedder.dim}] distance_metric=cosine
+                );
+                """
+            )
+            self.conn.commit()
 
     def count(self) -> int:
-        row = self.conn.execute("SELECT COUNT(*) AS n FROM episodes").fetchone()
-        return int(row["n"]) if row is not None else 0
+        with self._lock:
+            row = self.conn.execute("SELECT COUNT(*) AS n FROM episodes").fetchone()
+            return int(row["n"]) if row is not None else 0
 
     def record_episode(
         self,
@@ -133,24 +138,37 @@ class EpisodicMemoryStore:
         y: float,
     ) -> int:
         """Persist an episode and index its vector embedding in sqlite-vec."""
-        cur = self.conn.execute(
-            """
-            INSERT INTO episodes (
-                tick, entity, action, event_tag, summary,
-                delta_p, delta_a, delta_d, importance, x, y
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (tick, entity, action, event_tag, summary, delta_p, delta_a, delta_d, importance, x, y),
-        )
-        episode_id = int(cur.lastrowid)
         vec = self.embedder.embed(f"{entity} {event_tag} {action}: {summary}")
         serialized = sqlite_vec.serialize_float32(vec.tolist())
-        self.conn.execute(
-            "INSERT INTO memory_vec(rowid, embedding) VALUES (?, ?)",
-            (episode_id, serialized),
-        )
-        self.conn.commit()
-        return episode_id
+        with self._lock:
+            cur = self.conn.execute(
+                """
+                INSERT INTO episodes (
+                    tick, entity, action, event_tag, summary,
+                    delta_p, delta_a, delta_d, importance, x, y
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    tick,
+                    entity,
+                    action,
+                    event_tag,
+                    summary,
+                    delta_p,
+                    delta_a,
+                    delta_d,
+                    importance,
+                    x,
+                    y,
+                ),
+            )
+            episode_id = int(cur.lastrowid)
+            self.conn.execute(
+                "INSERT INTO memory_vec(rowid, embedding) VALUES (?, ?)",
+                (episode_id, serialized),
+            )
+            self.conn.commit()
+            return episode_id
 
     def retrieve_similar(
         self,
@@ -159,32 +177,35 @@ class EpisodicMemoryStore:
         entity: str | None = None,
     ) -> list[Episode]:
         """Run sqlite-vec cosine KNN retrieval with optional entity filtering."""
-        total = self.count()
-        if total == 0 or k <= 0:
+        if k <= 0:
             return []
-
-        fetch_k = min(total, k * 4 if entity is not None else k)
         query_vec = self.embedder.embed(query_text)
         serialized = sqlite_vec.serialize_float32(query_vec.tolist())
 
-        knn_rows = self.conn.execute(
-            """
-            SELECT rowid, distance
-            FROM memory_vec
-            WHERE embedding MATCH ? AND k = ?
-            ORDER BY distance ASC
-            """,
-            (serialized, fetch_k),
-        ).fetchall()
-        if not knn_rows:
-            return []
+        with self._lock:
+            total = self.count()
+            if total == 0:
+                return []
 
-        dist_map = {int(r["rowid"]): float(r["distance"]) for r in knn_rows}
-        placeholders = ",".join("?" for _ in dist_map)
-        rows = self.conn.execute(
-            f"SELECT * FROM episodes WHERE id IN ({placeholders})",
-            tuple(dist_map.keys()),
-        ).fetchall()
+            fetch_k = min(total, k * 4 if entity is not None else k)
+            knn_rows = self.conn.execute(
+                """
+                SELECT rowid, distance
+                FROM memory_vec
+                WHERE embedding MATCH ? AND k = ?
+                ORDER BY distance ASC
+                """,
+                (serialized, fetch_k),
+            ).fetchall()
+            if not knn_rows:
+                return []
+
+            dist_map = {int(r["rowid"]): float(r["distance"]) for r in knn_rows}
+            placeholders = ",".join("?" for _ in dist_map)
+            rows = self.conn.execute(
+                f"SELECT * FROM episodes WHERE id IN ({placeholders})",
+                tuple(dist_map.keys()),
+            ).fetchall()
 
         episodes: list[Episode] = []
         for r in rows:
@@ -218,14 +239,15 @@ class EpisodicMemoryStore:
         recency_decay: float = 0.004,
     ) -> tuple[float, float]:
         """Compute recency- and importance-weighted (trust [-1, 1], fear [0, 1]) for an entity."""
-        rows = self.conn.execute(
-            """
-            SELECT tick, delta_p, delta_a, delta_d, importance
-            FROM episodes
-            WHERE entity = ?
-            """,
-            (entity,),
-        ).fetchall()
+        with self._lock:
+            rows = self.conn.execute(
+                """
+                SELECT tick, delta_p, delta_a, delta_d, importance
+                FROM episodes
+                WHERE entity = ?
+                """,
+                (entity,),
+            ).fetchall()
         if not rows:
             return (0.0, 0.0)
 
@@ -254,7 +276,10 @@ class EpisodicMemoryStore:
         return (trust, fear)
 
     def close(self) -> None:
-        self.conn.close()
+        with self._lock:
+            if not self._closed:
+                self._closed = True
+                self.conn.close()
 
     def __enter__(self) -> Self:
         return self

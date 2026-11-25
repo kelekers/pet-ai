@@ -246,6 +246,12 @@ class RoomWorld:
             float(np.clip(y, 0.0, self.height)),
         )
 
+    def reset_objects(self) -> None:
+        """Restore all Smart Objects to intact state and calm ambient noise."""
+        for obj in self.objects.values():
+            obj.is_intact = True
+        self.ambient_noise = 0.1
+
     def step(self) -> None:
         """Advance deterministic environment cycles (e.g., drifting sunbeam warmth)."""
         self.tick += 1
@@ -253,5 +259,11 @@ class RoomWorld:
         if sunbeam is not None:
             # Slow sinusoidal daylight warmth shift between 25C and 33C
             sunbeam.surface_temp_c = 29.0 + 4.0 * math.sin(self.tick * 0.015)
-        # Subtle deterministic ambient noise jitter
-        self.ambient_noise = float(np.clip(0.1 + self.rng.normal(0.0, 0.02), 0.0, 1.0))
+        # Subtle deterministic ambient noise jitter; smoothly decay loud event spikes
+        base_noise = float(np.clip(0.1 + self.rng.normal(0.0, 0.02), 0.0, 1.0))
+        if self.ambient_noise > 0.16:
+            self.ambient_noise = float(
+                np.clip(0.65 * self.ambient_noise + 0.35 * base_noise, 0.0, 1.0)
+            )
+        else:
+            self.ambient_noise = base_noise

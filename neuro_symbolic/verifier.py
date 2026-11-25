@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
+from types import MappingProxyType
 
 from neuro_symbolic.skill_dsl import ANOMALY_GATES, BehaviorSkill
 from sim_core.genome import TraitGenome
@@ -10,6 +12,35 @@ MAX_SKILL_DURATION_TICKS = 36
 _TARGET_REQUIRED_PRIMITIVES: frozenset[str] = frozenset(
     {"approach", "stare", "nudge", "phase_object", "telepathic_gaze"}
 )
+
+
+@dataclass(frozen=True)
+class WorldObjectView:
+    """Immutable view of a SmartObject for thread-safe background verification."""
+
+    obj_id: str
+    elevation: float
+    is_intact: bool
+
+
+@dataclass(frozen=True)
+class WorldSnapshot:
+    """Immutable snapshot of RoomWorld state passed safely to worker threads."""
+
+    tick: int
+    objects: Mapping[str, WorldObjectView]
+
+    @classmethod
+    def from_world(cls, world: RoomWorld) -> WorldSnapshot:
+        views = {
+            obj_id: WorldObjectView(
+                obj_id=obj.obj_id,
+                elevation=float(obj.elevation),
+                is_intact=bool(obj.is_intact),
+            )
+            for obj_id, obj in world.objects.items()
+        }
+        return cls(tick=int(world.tick), objects=MappingProxyType(views))
 
 
 @dataclass(frozen=True)
@@ -27,7 +58,7 @@ class SymbolicSkillVerifier:
         self,
         skill: BehaviorSkill,
         genome: TraitGenome,
-        world: RoomWorld,
+        world: RoomWorld | WorldSnapshot,
         current_tick: int = 0,
         last_executed_tick: int | None = None,
     ) -> VerificationResult:

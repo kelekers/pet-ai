@@ -81,6 +81,8 @@ class HeadlessSimulation:
         self,
         target_object_id: str | None = None,
         affordance_name: str | None = None,
+        action_label_override: str | None = None,
+        activity_level_override: float | None = None,
     ) -> TickRecord:
         """Execute one deterministic simulation tick."""
         self.world.step()
@@ -115,6 +117,11 @@ class HeadlessSimulation:
                     self.pet.total_disruption += disruption_delta
                     if aff.breaks_object:
                         obj.is_intact = False
+
+        if action_label_override is not None:
+            action_label = action_label_override
+        if activity_level_override is not None:
+            activity_level = float(max(0.0, min(1.0, activity_level_override)))
 
         local_temp = self.world.local_temperature(self.pet.x, self.pet.y)
         self.pet.homeostasis = HomeostasisEngine.step(

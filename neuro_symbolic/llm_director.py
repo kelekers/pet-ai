@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 import urllib.error
 import urllib.request
 from concurrent.futures import Future, ThreadPoolExecutor
@@ -14,7 +15,7 @@ from pydantic import ValidationError
 from memory.emotion import PADState
 from memory.memory_store import Episode
 from neuro_symbolic.skill_dsl import ANOMALY_GATES, GROUNDED_PRIMITIVES, BehaviorSkill
-from neuro_symbolic.verifier import SymbolicSkillVerifier, VerificationResult
+from neuro_symbolic.verifier import SymbolicSkillVerifier, VerificationResult, WorldSnapshot
 from sim_core.genome import TraitGenome
 from sim_core.world import RoomWorld
 
@@ -64,11 +65,13 @@ class OllamaAdapter:
         host: str | None = None,
         num_ctx: int = 2048,
         temperature: float = 0.7,
+        timeout: float = 20.0,
     ) -> None:
         self.model = model
         self.host = host
         self.num_ctx = num_ctx
         self.temperature = temperature
+        self.timeout = timeout
 
     def generate_json(
         self,
@@ -78,23 +81,34 @@ class OllamaAdapter:
         context: SynthesisContext,
     ) -> str:
         del context
-        import ollama
+        try:
+            import ollama
 
-        client = ollama.Client(host=self.host) if self.host else ollama.Client()
-        # Append /no_think for Qwen3 models so structured JSON returns rapidly
-        response = client.chat(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": f"{system_prompt}\n/no_think"},
-                {"role": "user", "content": user_prompt},
-            ],
-            format=json_schema,
-            options={
-                "num_ctx": self.num_ctx,
-                "temperature": self.temperature,
-            },
-        )
-        return str(response["message"]["content"])
+            client = (
+                ollama.Client(host=self.host, timeout=self.timeout)
+                if self.host
+                else ollama.Client(timeout=self.timeout)
+            )
+            # Append /no_think for Qwen3 models so structured JSON returns rapidly
+            response = client.chat(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": f"{system_prompt}\n/no_think"},
+                    {"role": "user", "content": user_prompt},
+                ],
+                format=json_schema,
+                options={
+                    "num_ctx": self.num_ctx,
+                    "temperature": self.temperature,
+                },
+            )
+            message = response["message"]
+            content = message["content"]
+            if not isinstance(content, str) or not content.strip():
+                raise ValueError("Empty content returned by Ollama.")
+            return content
+        except Exception as exc:
+            raise RuntimeError(f"Ollama error ({self.model}): {exc}") from exc
 
 
 class CloudAPIAdapter:
@@ -145,9 +159,12 @@ class CloudAPIAdapter:
             },
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=self.timeout_sec) as resp:
-            payload = json.loads(resp.read().decode("utf-8"))
-        return str(payload["choices"][0]["message"]["content"])
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout_sec) as resp:
+                payload = json.loads(resp.read().decode("utf-8"))
+            return str(payload["choices"][0]["message"]["content"])
+        except Exception as exc:
+            raise RuntimeError(f"Cloud API error ({self.model}): {exc}") from exc
 
 
 class DeterministicMockAdapter:
@@ -355,7 +372,13 @@ class SkillSynthesizer:
         self.verifier = verifier or SymbolicSkillVerifier()
         self.max_repair_attempts = max(1, max_repair_attempts)
         self._executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="pet-llm")
+        self._lock = threading.Lock()
         self._pending: Future[SynthesisOutcome] | None = None
+
+    @property
+    def is_pending(self) -> bool:
+        with self._lock:
+            return self._pending is not None and not self._pending.done()
 
     @staticmethod
     def build_prompts(
@@ -404,30 +427,31 @@ class SkillSynthesizer:
     def synthesize_and_verify(
         self,
         ctx: SynthesisContext,
-        world: RoomWorld,
+        world: RoomWorld | WorldSnapshot,
     ) -> SynthesisOutcome:
         """Synthesize a BehaviorSkill and verify it symbolically, with bounded repair retries."""
         schema = BehaviorSkill.model_json_schema()
         repair_errors: tuple[str, ...] = ()
         last_ver: VerificationResult | None = None
+        attempts_used = 0
 
         for attempt in range(1, self.max_repair_attempts + 1):
+            attempts_used = attempt
             sys_p, usr_p = self.build_prompts(ctx, repair_errors=repair_errors)
             try:
                 raw = self.adapter.generate_json(sys_p, usr_p, schema, ctx)
                 blob = _extract_json_blob(raw)
                 skill = BehaviorSkill.model_validate_json(blob)
-            except (
-                ValidationError,
-                json.JSONDecodeError,
-                urllib.error.URLError,
-                OSError,
-                RuntimeError,
-                ValueError,
-                KeyError,
-            ) as exc:
-                repair_errors = (f"Schema/transport error: {exc}",)
+            except (ValidationError, json.JSONDecodeError, ValueError, KeyError, TypeError) as exc:
+                repair_errors = (f"Schema error: {exc}",)
                 continue
+            except (urllib.error.URLError, OSError, TimeoutError, RuntimeError) as exc:
+                # Transport / offline server / 404 model error: fail fast instead of stalling
+                repair_errors = (str(exc),)
+                break
+            except Exception as exc:  # noqa: BLE001 - isolate arbitrary adapter failures
+                repair_errors = (f"Unexpected adapter error: {exc}",)
+                break
 
             ver = self.verifier.verify(
                 skill=skill,
@@ -443,24 +467,39 @@ class SkillSynthesizer:
         return SynthesisOutcome(
             skill=None,
             verification=last_ver,
-            attempts=self.max_repair_attempts,
+            attempts=attempts_used,
             raw_errors=repair_errors,
         )
 
-    def request_async(self, ctx: SynthesisContext, world: RoomWorld) -> bool:
-        """Dispatch synthesis to background thread without blocking real-time ticks."""
-        if self._pending is not None and not self._pending.done():
-            return False
-        self._pending = self._executor.submit(self.synthesize_and_verify, ctx, world)
-        return True
+    def request_async(self, ctx: SynthesisContext, world: RoomWorld | WorldSnapshot) -> bool:
+        """Dispatch synthesis with an immutable world snapshot to avoid cross-thread races."""
+        snapshot = world if isinstance(world, WorldSnapshot) else WorldSnapshot.from_world(world)
+        with self._lock:
+            if self._pending is not None and not self._pending.done():
+                return False
+            self._pending = self._executor.submit(self.synthesize_and_verify, ctx, snapshot)
+            return True
 
     def poll_async(self) -> SynthesisOutcome | None:
-        """Collect completed async synthesis result if ready; returns None while running."""
-        if self._pending is None or not self._pending.done():
-            return None
-        future = self._pending
-        self._pending = None
-        return future.result()
+        """Collect completed async synthesis result safely; never raises into the tick loop."""
+        with self._lock:
+            if self._pending is None or not self._pending.done():
+                return None
+            future = self._pending
+            self._pending = None
+        try:
+            return future.result()
+        except Exception as exc:  # noqa: BLE001 - never crash tick loop from background worker
+            return SynthesisOutcome(
+                skill=None,
+                verification=None,
+                attempts=0,
+                raw_errors=(f"Async synthesis error: {exc}",),
+            )
 
     def shutdown(self) -> None:
-        self._executor.shutdown(wait=False)
+        with self._lock:
+            if self._pending is not None:
+                self._pending.cancel()
+                self._pending = None
+        self._executor.shutdown(wait=False, cancel_futures=True)
